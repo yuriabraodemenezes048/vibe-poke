@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vibe Poké | Poke Bowls Fresquinhos em Florianópolis</title>
-  <meta name="description" content="Os melhores poke bowls de Florianópolis. 4 unidades: Campeche, Rita Maria, Jurerê e Santa Mônica. Ingredientes frescos, sabores incríveis. Peça agora!">
-  <meta name="keywords" content="poke bowl florianópolis, vibe poke, comida havaiana, campeche, jurerê, delivery floripa">
-  <meta property="og:title" content="Vibe Poké | Poke Bowls em Florianópolis">
+  <title>Vibe Poke | Poke Bowls Fresquinhos em Florianópolis</title>
+  <meta name="description" content="Os melhores poke bowls de Florianópolis. 4 unidades: Campeche, Rita Maria, Jurerê e Santa Mônica. Ingredientes frescos, sabores incríveis.">
+  <meta property="og:title" content="Vibe Poke | Poke Bowls em Florianópolis">
   <meta property="og:description" content="Os melhores poke bowls de Florianópolis. Ingredientes frescos, sabores incríveis. 4 unidades!">
   <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:type" content="restaurant">
@@ -23,10 +22,10 @@
             vgreen: '#4E7A5C',
             vcoral: '#E07A5F',
             vcream: '#FAFAF8',
-            vink: '#1A1A1A',
+            vink:   '#1A1A1A',
           },
           fontFamily: {
-            sans: ['Inter','ui-sans-serif','system-ui'],
+            sans:    ['Inter','ui-sans-serif','system-ui'],
             heading: ['Poppins','ui-sans-serif'],
           }
         }
@@ -37,81 +36,87 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: #FAFAF8; color: #1A1A1A; overflow-x: hidden; }
-    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
 
-    /* ── Navbar ───────────────────────────────────────── */
-    #navbar { transition: background 0.35s ease, box-shadow 0.35s ease; }
-    #navbar.solid { background: rgba(250,250,248,0.96); backdrop-filter: blur(14px); box-shadow: 0 1px 24px rgba(0,0,0,0.08); }
-    #navbar.solid .nav-link { color: #1A1A1A !important; opacity: .8; }
-    #navbar.solid #nav-logo { color: #4E7A5C !important; }
+    /* Navbar */
+    #navbar { transition: background .35s ease, box-shadow .35s ease; }
+    #navbar.solid { background: rgba(250,250,248,.96); backdrop-filter: blur(14px); box-shadow: 0 1px 24px rgba(0,0,0,.08); }
+    #navbar.solid .nav-link { color: #1A1A1A !important; opacity: .75; }
+    #navbar.solid #nav-logo-img { filter: none; }
 
-    /* ── Hero Slideshow ───────────────────────────────── */
+    /* Hero slideshow */
     .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
     .slide.active { opacity: 1; }
 
-    /* ── Scroll Reveal ────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.in { opacity: 1; transform: none; }
-    .delay-1 { transition-delay: .1s; }
-    .delay-2 { transition-delay: .2s; }
-    .delay-3 { transition-delay: .3s; }
-    .delay-4 { transition-delay: .4s; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
 
-    /* ── Cards ────────────────────────────────────────── */
+    /* Card hover */
     .card { transition: transform .3s ease, box-shadow .3s ease; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(0,0,0,0.12); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.11); }
 
-    /* ── FAQ ──────────────────────────────────────────── */
-    .faq-body { max-height: 0; overflow: hidden; transition: max-height .45s ease, padding .3s ease; }
-    .faq-body.open { max-height: 280px; }
+    /* FAQ */
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .45s ease; }
+    .faq-body.open { max-height: 260px; }
     .faq-icon { transition: transform .3s ease; display: inline-block; }
-    .faq-open .faq-icon { transform: rotate(45deg); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-    /* ── Tag badges ───────────────────────────────────── */
-    .badge { display: inline-flex; align-items: center; gap: 3px; padding: 3px 10px; border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .03em; }
-    .badge-green { background: rgba(78,122,92,.12); color: #4E7A5C; }
-    .badge-coral { background: rgba(224,122,95,.12); color: #E07A5F; }
+    /* Menu tabs */
+    .tab-btn { border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    .tab-btn.active { color: #4E7A5C; border-color: #4E7A5C; }
 
-    /* ── Scrollbar ────────────────────────────────────── */
+    /* Menu item */
+    .menu-item { border-bottom: 1px solid #f0f0ee; }
+    .menu-item:last-child { border-bottom: none; }
+
+    /* Badges */
+    .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px; font-size: .65rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .b-coral  { background: rgba(224,122,95,.12); color: #E07A5F; }
+    .b-green  { background: rgba(78,122,92,.12);  color: #4E7A5C; }
+    .b-gray   { background: rgba(26,26,26,.07);   color: #555; }
+
+    /* Mobile drawer */
+    #mobile-drawer  { transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); }
+    #mobile-drawer.open  { transform: translateX(0); }
+    #drawer-overlay      { opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+    #drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+    /* Bounce */
+    @keyframes bounce-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    .bounce { animation: bounce-y 1.6s ease-in-out infinite; }
+
+    /* Pulse */
+    @keyframes pulse-dot { 0%,100% { transform: scale(1); opacity:.7; } 50% { transform: scale(1.4); opacity:1; } }
+    .pulse { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* Scrollbar */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #eee; }
     ::-webkit-scrollbar-thumb { background: #4E7A5C; border-radius: 3px; }
-
-    /* ── Mobile menu ──────────────────────────────────── */
-    #mobile-drawer { transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); }
-    #mobile-drawer.open { transform: translateX(0); }
-    #drawer-overlay { opacity: 0; pointer-events: none; transition: opacity .35s ease; }
-    #drawer-overlay.open { opacity: 1; pointer-events: all; }
-
-    /* ── Pulse dot ─────────────────────────────────────── */
-    @keyframes pulse-dot { 0%,100% { transform: scale(1); opacity:.8; } 50% { transform: scale(1.4); opacity:1; } }
-    .pulse { animation: pulse-dot 2s ease-in-out infinite; }
-
-    /* ── Float ─────────────────────────────────────────── */
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-    .float { animation: float 6s ease-in-out infinite; }
-
-    /* ── Bounce ─────────────────────────────────────────── */
-    @keyframes bounce-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-    .bounce { animation: bounce-y 1.6s ease-in-out infinite; }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      NAVBAR
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <nav id="navbar" class="fixed top-0 inset-x-0 z-50 px-6 py-4">
   <div class="max-w-6xl mx-auto flex items-center justify-between">
 
-    <a href="#" id="nav-logo" class="font-heading font-extrabold text-2xl text-white tracking-tight transition-colors">
-      vibe poké
+    <!-- Logo -->
+    <a href="#" class="flex items-center">
+      <img id="nav-logo-img" src="images/logo.png" alt="Vibe Poke" class="h-9 w-auto brightness-0 invert">
     </a>
 
     <!-- Desktop links -->
     <div class="hidden md:flex items-center gap-7">
       <a href="#sobre"      class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Sobre</a>
-      <a href="#cardapio"   class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Cardápio</a>
+      <a href="#cardapio"   class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Cardapio</a>
       <a href="#avaliacoes" class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Avaliações</a>
       <a href="#lojas"      class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Lojas</a>
       <a href="#faq"        class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">FAQ</a>
@@ -121,7 +126,7 @@
     <div class="flex items-center gap-3">
       <a href="https://wa.me/5548991743368" target="_blank"
          class="hidden sm:flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#1DAD55] transition-colors shadow-md">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         WhatsApp
       </a>
       <button id="menu-btn" class="md:hidden text-white p-1.5" aria-label="Menu">
@@ -131,20 +136,18 @@
   </div>
 </nav>
 
-<!-- Mobile drawer overlay -->
+<!-- Overlay + Drawer -->
 <div id="drawer-overlay" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" onclick="closeDrawer()"></div>
-
-<!-- Mobile drawer -->
 <div id="mobile-drawer" class="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl flex flex-col p-8">
   <div class="flex items-center justify-between mb-10">
-    <span class="font-heading font-extrabold text-xl text-vgreen">vibe poké</span>
-    <button onclick="closeDrawer()" class="text-gray-500 hover:text-vink">
+    <img src="images/logo.png" alt="Vibe Poke" class="h-8 w-auto">
+    <button onclick="closeDrawer()" class="text-gray-400 hover:text-vink">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
-  <nav class="flex flex-col gap-5 text-lg font-semibold text-vink">
+  <nav class="flex flex-col gap-5 text-base font-semibold text-vink">
     <a href="#sobre"      onclick="closeDrawer()">Sobre</a>
-    <a href="#cardapio"   onclick="closeDrawer()">Cardápio</a>
+    <a href="#cardapio"   onclick="closeDrawer()">Cardapio</a>
     <a href="#avaliacoes" onclick="closeDrawer()">Avaliações</a>
     <a href="#lojas"      onclick="closeDrawer()">Lojas</a>
     <a href="#faq"        onclick="closeDrawer()">FAQ</a>
@@ -152,141 +155,149 @@
   </nav>
   <div class="mt-auto flex flex-col gap-3">
     <a href="https://wa.me/5548991743368" target="_blank"
-       class="flex items-center justify-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-xl font-bold text-sm">
-      📱 Pedir no WhatsApp
-    </a>
+       class="flex items-center justify-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-xl font-bold text-sm">Pedir no WhatsApp</a>
     <a href="https://www.ifood.com.br" target="_blank"
-       class="flex items-center justify-center gap-2 bg-vcoral text-white px-4 py-3 rounded-xl font-bold text-sm">
-      🛵 Pedir no iFood
-    </a>
+       class="flex items-center justify-center gap-2 bg-vcoral text-white px-4 py-3 rounded-xl font-bold text-sm">Pedir no iFood</a>
   </div>
 </div>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      HERO
-══════════════════════════════════════════════════════════ -->
-<section class="relative h-screen min-h-[600px] overflow-hidden" id="hero">
-  <!-- Slideshow -->
+══════════════════════════════════════════ -->
+<section class="relative h-screen min-h-[600px] overflow-hidden">
   <div class="absolute inset-0">
-    <div class="slide active"><img src="images/photo-1.jpg" alt="Poke Bowl Vibe Poke" class="w-full h-full object-cover"></div>
-    <div class="slide"><img src="images/photo-2.jpg" alt="Poke Bowl Vibe Poke" class="w-full h-full object-cover"></div>
-    <div class="slide"><img src="images/photo-3.jpg" alt="Poke Bowl Vibe Poke" class="w-full h-full object-cover"></div>
-    <div class="slide"><img src="images/photo-4.jpg" alt="Poke Bowl Vibe Poke" class="w-full h-full object-cover"></div>
+    <div class="slide active"><img src="images/photo-1.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
+    <div class="slide"><img src="images/photo-2.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
+    <div class="slide"><img src="images/photo-3.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
+    <div class="slide"><img src="images/photo-4.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
   </div>
-  <!-- Overlay gradient -->
-  <div class="absolute inset-0" style="background:linear-gradient(105deg,rgba(26,26,26,.78) 0%,rgba(26,26,26,.35) 55%,transparent 100%)"></div>
-  <!-- Floating emojis desktop -->
-  <span class="hidden lg:block absolute top-32 right-28 text-4xl float" style="animation-delay:.5s">🌊</span>
-  <span class="hidden lg:block absolute top-52 right-56 text-3xl float" style="animation-delay:1.2s">🐟</span>
-  <span class="hidden lg:block absolute bottom-36 right-36 text-3xl float" style="animation-delay:2s">🥑</span>
+  <div class="absolute inset-0" style="background:linear-gradient(105deg,rgba(26,26,26,.80) 0%,rgba(26,26,26,.35) 55%,transparent 100%)"></div>
 
-  <!-- Content -->
   <div class="relative z-10 h-full flex items-center">
     <div class="max-w-6xl mx-auto px-6 w-full">
       <div class="max-w-xl">
-        <!-- Rating badge -->
-        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <!-- Rating chip -->
+        <div class="inline-flex items-center gap-2 bg-white/12 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
           <span class="w-2 h-2 bg-[#4E7A5C] rounded-full pulse"></span>
-          ⭐ 4.8 · +1.300 avaliações · 4 unidades em Floripa
+          ★ 4.8 &nbsp;·&nbsp; +1.300 avaliações &nbsp;·&nbsp; 4 unidades em Floripa
         </div>
 
-        <h1 class="font-heading font-extrabold text-5xl sm:text-6xl md:text-7xl text-white leading-[1.08] mb-6">
-          Poke <span style="color:#E07A5F">Fresh</span><br>& Saboroso
+        <h1 class="font-heading font-extrabold text-5xl sm:text-6xl md:text-7xl text-white leading-[1.06] mb-5">
+          O Poke Que<br>Vai Além do<br><span style="color:#E07A5F">Sabor</span>
         </h1>
 
-        <p class="text-white/80 text-lg mb-9 leading-relaxed">
-          Ingredientes frescos selecionados todo dia.<br>
-          Do Campeche a Jurerê — entregamos onde você estiver.
+        <p class="text-white/78 text-lg mb-9 leading-relaxed">
+          Ingredientes frescos, combinações exclusivas e uma<br class="hidden sm:block">
+          experiência que faz você querer voltar.
         </p>
 
         <div class="flex flex-wrap gap-4">
-          <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido%20🍣" target="_blank"
+          <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank"
              class="flex items-center gap-2 bg-vcoral hover:bg-[#c9664d] text-white px-7 py-3.5 rounded-full font-bold shadow-xl hover:scale-105 transition-all">
-            🍣 Pedir Agora
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+            Pedir Agora
           </a>
           <a href="#cardapio"
              class="flex items-center gap-2 border-2 border-white/50 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-all">
-            Ver Cardápio →
+            Ver Cardapio
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
 
-        <!-- Locations row -->
+        <!-- Location chips -->
         <div class="flex flex-wrap gap-2 mt-8">
-          <span class="bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">📍 Campeche</span>
-          <span class="bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">📍 Rita Maria</span>
-          <span class="bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">📍 Jurerê</span>
-          <span class="bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">📍 Santa Mônica</span>
+          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Campeche
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rita Maria
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Jurere
+          </span>
+          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Santa Monica
+          </span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll arrow -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 bounce">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 bounce">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      DIFERENCIAIS
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <section class="py-20 bg-white">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Por que Vibe Poké?</span>
+      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Por que Vibe Poke?</span>
       <h2 class="font-heading font-bold text-4xl text-vink mt-3">O que nos torna especiais</h2>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="text-center p-6 rounded-2xl bg-[#FAFAF8] card reveal delay-1">
-        <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🌊</div>
+      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d1">
+        <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor" stroke="none"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+        </div>
         <h3 class="font-heading font-semibold text-base text-vink mb-2">Ingredientes Frescos</h3>
         <p class="text-gray-500 text-sm leading-relaxed">Selecionados diariamente para garantir sabor e qualidade.</p>
       </div>
-      <div class="text-center p-6 rounded-2xl bg-[#FAFAF8] card reveal delay-2">
-        <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🐟</div>
+      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d2">
+        <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon stroke-linejoin="round" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
         <h3 class="font-heading font-semibold text-base text-vink mb-2">Peixe Premium</h3>
         <p class="text-gray-500 text-sm leading-relaxed">Salmão e atum de alta qualidade em cada bowl.</p>
       </div>
-      <div class="text-center p-6 rounded-2xl bg-[#FAFAF8] card reveal delay-3">
-        <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🥑</div>
-        <h3 class="font-heading font-semibold text-base text-vink mb-2">Opções Veganas</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Proteínas plant-based para todos os gostos.</p>
+      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d3">
+        <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12m0 0c0-5 7-9 7-9s-1 7-7 9zm0 0c0-5-7-9-7-9s1 7 7 9z"/></svg>
+        </div>
+        <h3 class="font-heading font-semibold text-base text-vink mb-2">Opcoes Veganas</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Proteinas plant-based para todos os gostos.</p>
       </div>
-      <div class="text-center p-6 rounded-2xl bg-[#FAFAF8] card reveal delay-4">
-        <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">⚡</div>
-        <h3 class="font-heading font-semibold text-base text-vink mb-2">Entrega Rápida</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Delivery disponível pelo iFood e WhatsApp.</p>
+      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d4">
+        <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline stroke-linecap="round" stroke-linejoin="round" points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="font-heading font-semibold text-base text-vink mb-2">Entrega Rapida</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Delivery disponivel pelo iFood e WhatsApp.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      SOBRE
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <section id="sobre" class="py-24 bg-vcream">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <!-- Photo collage -->
       <div class="grid grid-cols-2 gap-3 reveal">
         <img src="images/photo-5.jpg" alt="Vibe Poke" class="col-span-2 h-56 w-full object-cover rounded-2xl">
         <img src="images/photo-6.jpg" alt="Vibe Poke" class="h-40 w-full object-cover rounded-2xl">
         <img src="images/photo-7.jpg" alt="Vibe Poke" class="h-40 w-full object-cover rounded-2xl">
       </div>
-      <!-- Text -->
-      <div class="reveal delay-2">
-        <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Nossa História</span>
+      <div class="reveal d2">
+        <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Nossa Historia</span>
         <h2 class="font-heading font-bold text-4xl text-vink mt-3 mb-6 leading-snug">
           Nascidos do sol<br>e do mar de Floripa
         </h2>
         <p class="text-gray-600 leading-relaxed mb-5">
-          A Vibe Poké nasceu da paixão pelo estilo de vida saudável de Florianópolis. Inspirados pela culinária havaiana e pela energia da ilha, criamos um espaço onde cada bowl conta uma história de frescor e sabor.
+          A Vibe Poke nasceu da paixao pelo estilo de vida saudavel de Florianopolis. Inspirados pela culinaria havaiana e pela energia da ilha, criamos um espaco onde cada bowl conta uma historia de frescor e sabor.
         </p>
         <p class="text-gray-600 leading-relaxed mb-10">
-          Com mais de 1.300 avaliações cinco estrelas e 4 unidades espalhadas pela cidade, somos referência em poke bowls em Floripa. Cada ingrediente é cuidadosamente selecionado todo dia.
+          Com mais de 1.300 avaliacoes cinco estrelas e 4 unidades espalhadas pela cidade, somos referencia em poke bowls em Floripa. Cada ingrediente e cuidadosamente selecionado todo dia.
         </p>
         <div class="grid grid-cols-3 gap-4">
           <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
@@ -294,8 +305,8 @@
             <div class="text-xs text-gray-500 mt-1 font-medium">Unidades</div>
           </div>
           <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
-            <div class="font-heading font-bold text-3xl text-vcoral">4.8★</div>
-            <div class="text-xs text-gray-500 mt-1 font-medium">Avaliação</div>
+            <div class="font-heading font-bold text-3xl text-vcoral">4.8 ★</div>
+            <div class="text-xs text-gray-500 mt-1 font-medium">Avaliacao</div>
           </div>
           <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
             <div class="font-heading font-bold text-3xl text-vgreen">+1.3k</div>
@@ -308,38 +319,49 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     CARDÁPIO
-══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     CARDAPIO
+══════════════════════════════════════════ -->
 <section id="cardapio" class="py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Nosso Cardápio</span>
-      <h2 class="font-heading font-bold text-4xl text-vink mt-3 mb-3">Os Mais Pedidos</h2>
-      <p class="text-gray-500 max-w-md mx-auto text-sm">Montados com ingredientes frescos e muita criatividade</p>
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Nosso Cardapio</span>
+      <h2 class="font-heading font-bold text-4xl text-vink mt-3 mb-3">Tudo o que temos</h2>
+      <p class="text-gray-500 text-sm max-w-md mx-auto">Ingredientes frescos, combinacoes exclusivas. Personalize como preferir.</p>
     </div>
-    <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    <div class="text-center mt-12 reveal">
-      <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20ver%20o%20cardápio%20completo" target="_blank"
+
+    <!-- Category tabs -->
+    <div class="flex gap-0 border-b border-gray-100 mb-8 overflow-x-auto" id="menu-tabs" style="scrollbar-width:none">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Items list -->
+    <div id="menu-items" class="space-y-0">
+      <!-- rendered by JS -->
+    </div>
+
+    <div class="mt-10 flex justify-center reveal">
+      <a href="https://wa.me/5548991743368?text=Oi!%20Gostaria%20de%20fazer%20um%20pedido" target="_blank"
          class="inline-flex items-center gap-2 bg-vgreen text-white px-8 py-3.5 rounded-full font-bold hover:bg-[#3d6149] hover:scale-105 transition-all shadow-lg">
-        Ver Cardápio Completo →
+        Fazer Pedido
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     AVALIAÇÕES
-══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     AVALIACOES
+══════════════════════════════════════════ -->
 <section id="avaliacoes" class="py-24 bg-vink">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">O que falam de nós</span>
+      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">O que falam de nos</span>
       <h2 class="font-heading font-bold text-4xl text-white mt-3">+1.300 clientes felizes</h2>
       <div class="flex justify-center items-center gap-2 mt-4">
-        <span class="text-[#F59E0B] text-xl">★★★★★</span>
-        <span class="text-white/50 text-sm">4.8 / 5.0</span>
+        <span class="text-[#F59E0B] text-xl tracking-wide">★★★★★</span>
+        <span class="text-white/40 text-sm">4.8 / 5.0</span>
       </div>
     </div>
     <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
@@ -347,83 +369,115 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      DELIVERY BANNER
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <section class="py-16 bg-vcoral">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="text-white reveal">
         <span class="text-xs font-bold tracking-widest text-white/60 uppercase">Delivery</span>
-        <h2 class="font-heading font-bold text-4xl mt-2 mb-2">Peça pelo iFood</h2>
-        <p class="text-white/80">Entregamos no conforto da sua casa. 4 unidades disponíveis.</p>
+        <h2 class="font-heading font-bold text-4xl mt-2 mb-2">Peca pelo iFood</h2>
+        <p class="text-white/80">Entregamos no conforto da sua casa. 4 unidades disponiveis.</p>
       </div>
-      <div class="flex flex-wrap gap-3 reveal delay-2">
+      <div class="flex flex-wrap gap-3 reveal d2">
         <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-campeche" target="_blank"
-           class="bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md whitespace-nowrap">🛵 Campeche</a>
+           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Campeche
+        </a>
         <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-rita-maria" target="_blank"
-           class="bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md whitespace-nowrap">🛵 Rita Maria</a>
+           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Rita Maria
+        </a>
         <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-jurere" target="_blank"
-           class="bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md whitespace-nowrap">🛵 Jurerê</a>
+           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Jurere
+        </a>
         <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-santa-monica" target="_blank"
-           class="bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md whitespace-nowrap">🛵 Santa Mônica</a>
+           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Santa Monica
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     LOCALIZAÇÕES
-══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     LOCALIZACOES
+══════════════════════════════════════════ -->
 <section id="lojas" class="py-24 bg-vcream">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-14 reveal">
       <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Onde estamos</span>
       <h2 class="font-heading font-bold text-4xl text-vink mt-3">Nossas Unidades</h2>
-      <p class="text-gray-500 mt-3 text-sm font-medium">Segunda–Domingo · 11h às 23h</p>
+      <p class="text-gray-500 mt-3 text-sm font-medium">Segunda a Domingo · 11h as 23h</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal delay-1">
-        <div class="w-12 h-12 bg-vgreen/10 rounded-xl flex items-center justify-center text-2xl mb-4">🏖️</div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d1">
+        <div class="w-10 h-10 bg-vgreen/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
         <h3 class="font-heading font-bold text-lg text-vink mb-1">Campeche</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Av. Campeche, 2480<br>Florianópolis – SC</p>
+        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Av. Campeche, 2480<br>Florianopolis – SC</p>
         <a href="https://maps.google.com/?q=Av.+Campeche+2480+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline">Ver no mapa →</a>
+           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
+          Ver no mapa
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal delay-2">
-        <div class="w-12 h-12 bg-vcoral/10 rounded-xl flex items-center justify-center text-2xl mb-4">⚓</div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d2">
+        <div class="w-10 h-10 bg-vcoral/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
         <h3 class="font-heading font-bold text-lg text-vink mb-1">Rita Maria</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Al. Annita Hoepcke da Silva, 112<br>Florianópolis – SC</p>
+        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Al. Annita Hoepcke da Silva, 112<br>Florianopolis – SC</p>
         <a href="https://maps.google.com/?q=Alameda+Annita+Hoepcke+da+Silva+112+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline">Ver no mapa →</a>
+           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
+          Ver no mapa
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal delay-3">
-        <div class="w-12 h-12 bg-vgreen/10 rounded-xl flex items-center justify-center text-2xl mb-4">🌴</div>
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">Jurerê</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Rod. Jorn. Maurício S. Sobrinho, 5862<br>Florianópolis – SC</p>
+      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d3">
+        <div class="w-10 h-10 bg-vgreen/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-vink mb-1">Jurere</h3>
+        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Rod. Jorn. Mauricio S. Sobrinho, 5862<br>Florianopolis – SC</p>
         <a href="https://maps.google.com/?q=Rodovia+Jornalista+Maurício+Sirotsky+Sobrinho+5862+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline">Ver no mapa →</a>
+           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
+          Ver no mapa
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal delay-4">
-        <div class="w-12 h-12 bg-vcoral/10 rounded-xl flex items-center justify-center text-2xl mb-4">🏙️</div>
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">Santa Mônica</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Av. Me. Benvenuta, 1168<br>Florianópolis – SC</p>
+      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d4">
+        <div class="w-10 h-10 bg-vcoral/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-vink mb-1">Santa Monica</h3>
+        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Av. Me. Benvenuta, 1168<br>Florianopolis – SC</p>
         <a href="https://maps.google.com/?q=Avenida+Me.+Benvenuta+1168+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline">Ver no mapa →</a>
+           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
+          Ver no mapa
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      FAQ
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <section id="faq" class="py-24 bg-white">
   <div class="max-w-3xl mx-auto px-6">
     <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Dúvidas</span>
+      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Duvidas</span>
       <h2 class="font-heading font-bold text-4xl text-vink mt-3">Perguntas Frequentes</h2>
     </div>
     <div id="faq-list" class="space-y-3"></div>
@@ -431,9 +485,9 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      INSTAGRAM GRID
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <section class="py-20 bg-vcream">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-10 reveal">
@@ -457,189 +511,249 @@
     <div class="text-center mt-8 reveal">
       <a href="https://www.instagram.com/vibepoke/" target="_blank"
          class="inline-flex items-center gap-2 border-2 border-vink text-vink px-6 py-3 rounded-full font-bold text-sm hover:bg-vink hover:text-white transition-all">
-        📷 Seguir @vibepoke
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Seguir @vibepoke
       </a>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     CTA FINAL / CONTATO
-══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════ -->
 <section id="contato" class="py-28 bg-vgreen">
   <div class="max-w-4xl mx-auto px-6 text-center reveal">
-    <span class="text-xs font-bold tracking-widest text-white/50 uppercase">Fale Conosco</span>
-    <h2 class="font-heading font-extrabold text-5xl md:text-6xl text-white mt-3 mb-6">Pronto para vibar?</h2>
-    <p class="text-white/75 text-xl mb-10 max-w-lg mx-auto">
-      Peça agora pelo WhatsApp ou venha nos visitar.<br>
-      Todo dia, das 11h às 23h!
+    <span class="text-xs font-bold tracking-widest text-white/45 uppercase">Fale Conosco</span>
+    <h2 class="font-heading font-extrabold text-5xl md:text-6xl text-white mt-3 mb-6">Pronto para pedir?</h2>
+    <p class="text-white/72 text-xl mb-10 max-w-lg mx-auto leading-relaxed">
+      Peca agora pelo WhatsApp ou venha nos visitar.<br>Todo dia, das 11h as 23h.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido%20🍣" target="_blank"
+      <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank"
          class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-[#1DAD55] hover:scale-105 transition-all shadow-xl">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Pedir no WhatsApp
       </a>
       <a href="https://www.instagram.com/vibepoke/" target="_blank"
-         class="flex items-center justify-center gap-3 bg-white/20 backdrop-blur text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/30 transition-all border border-white/30">
-        📸 @vibepoke
+         class="flex items-center justify-center gap-3 bg-white/18 backdrop-blur text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/28 transition-all border border-white/25">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @vibepoke
       </a>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      FOOTER
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <footer class="bg-vink text-white py-14">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
       <div class="md:col-span-2">
-        <div class="font-heading font-extrabold text-2xl text-vgreen mb-3">vibe poké</div>
-        <p class="text-white/45 text-sm leading-relaxed max-w-xs">Os melhores poke bowls de Florianópolis. Ingredientes frescos, sabores incríveis.</p>
-        <p class="text-white/40 text-xs mt-4">📞 (48) 99174-3368</p>
+        <img src="images/logo.png" alt="Vibe Poke" class="h-8 w-auto brightness-0 invert mb-4">
+        <p class="text-white/40 text-sm leading-relaxed max-w-xs">Os melhores poke bowls de Florianopolis. Ingredientes frescos, sabores incríveis.</p>
+        <p class="text-white/30 text-xs mt-4">(48) 99174-3368</p>
       </div>
       <div>
-        <h4 class="text-xs font-bold tracking-widest text-white/40 uppercase mb-4">Links</h4>
+        <h4 class="text-xs font-bold tracking-widest text-white/35 uppercase mb-4">Links</h4>
         <div class="space-y-2.5">
-          <a href="#sobre"      class="block text-sm text-white/55 hover:text-white transition-colors">Sobre</a>
-          <a href="#cardapio"   class="block text-sm text-white/55 hover:text-white transition-colors">Cardápio</a>
-          <a href="#avaliacoes" class="block text-sm text-white/55 hover:text-white transition-colors">Avaliações</a>
-          <a href="#lojas"      class="block text-sm text-white/55 hover:text-white transition-colors">Nossas Lojas</a>
+          <a href="#sobre"      class="block text-sm text-white/50 hover:text-white transition-colors">Sobre</a>
+          <a href="#cardapio"   class="block text-sm text-white/50 hover:text-white transition-colors">Cardapio</a>
+          <a href="#avaliacoes" class="block text-sm text-white/50 hover:text-white transition-colors">Avaliacoes</a>
+          <a href="#lojas"      class="block text-sm text-white/50 hover:text-white transition-colors">Nossas Lojas</a>
         </div>
       </div>
       <div>
-        <h4 class="text-xs font-bold tracking-widest text-white/40 uppercase mb-4">Contato</h4>
+        <h4 class="text-xs font-bold tracking-widest text-white/35 uppercase mb-4">Contato</h4>
         <div class="space-y-2.5">
-          <a href="https://wa.me/5548991743368"       target="_blank" class="block text-sm text-white/55 hover:text-white transition-colors">WhatsApp</a>
-          <a href="https://www.instagram.com/vibepoke/" target="_blank" class="block text-sm text-white/55 hover:text-white transition-colors">Instagram @vibepoke</a>
-          <p class="text-sm text-white/35">Seg–Dom: 11h–23h</p>
+          <a href="https://wa.me/5548991743368"         target="_blank" class="block text-sm text-white/50 hover:text-white transition-colors">WhatsApp</a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" class="block text-sm text-white/50 hover:text-white transition-colors">Instagram @vibepoke</a>
+          <p class="text-sm text-white/30">Seg–Dom: 11h–23h</p>
         </div>
       </div>
     </div>
-    <div class="border-t border-white/10 pt-6 text-center text-white/25 text-xs">
-      © 2024 Vibe Poké. Todos os direitos reservados. Florianópolis – SC.
+    <div class="border-t border-white/8 pt-6 text-center text-white/20 text-xs">
+      &copy; 2024 Vibe Poke. Todos os direitos reservados. Florianopolis – SC.
     </div>
   </div>
 </footer>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     FLOATING WHATSAPP
-══════════════════════════════════════════════════════════ -->
-<a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido%20🍣" target="_blank"
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank"
    class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
-  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
 
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      SCRIPTS
-══════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-const menu = [
-  { name:'Poke Campeche',    price:'R$ 59,90', tag:'🔥 Mais Pedido', tc:'badge-coral', desc:'Salmão, avocado, manga, edamame, cebolinha, gergelim torrado', img:'images/photo-1.jpg' },
-  { name:'Poke Jurerê',      price:'R$ 52,90', tag:'⭐ Premium',     tc:'badge-green', desc:'Atum, pepino, cebola roxa, alga nori, molho ponzu',            img:'images/photo-2.jpg' },
-  { name:'Poke Tropical',    price:'R$ 54,90', tag:'🌴 Especial',    tc:'badge-green', desc:'Salmão grelhado, abacaxi, coco, coentro, pimenta sriracha',    img:'images/photo-3.jpg' },
-  { name:'Poke Vegano',      price:'R$ 44,90', tag:'🌱 Vegano',      tc:'badge-green', desc:'Tofu grelhado, avocado, pepino, edamame, gergelim, shoyu',     img:'images/photo-4.jpg' },
-  { name:'Poke Spicy Tuna',  price:'R$ 56,90', tag:'🌶️ Apimentado', tc:'badge-coral', desc:'Atum, maionese sriracha, cebolinha, pepino crocante',          img:'images/photo-5.jpg' },
-  { name:'Poke Havaiano',    price:'R$ 57,90', tag:'🌺 Novo',        tc:'badge-coral', desc:'Mix de peixes, abacaxi, macadâmia, wakame, molho teriyaki',    img:'images/photo-6.jpg' },
+// ── MENU DATA ────────────────────────────────────────────────────────────────
+const categories = [
+  { id: 'entradas',   label: 'Entradas'   },
+  { id: 'pokes',      label: 'Pokes'      },
+  { id: 'hot',        label: 'Hot'        },
+  { id: 'temakis',    label: 'Temakis'    },
+  { id: 'bebidas',    label: 'Bebidas'    },
+  { id: 'sobremesas', label: 'Sobremesas' },
+  { id: 'extras',     label: 'Extras'     },
 ];
 
-const reviews = [
-  { n:'Ana Carolina', loc:'Campeche',    av:'A', t:'O melhor poke de Floripa sem dúvidas! Sempre fresco, ingredientes de qualidade e atendimento impecável. Virei cliente fiel!' },
-  { n:'Pedro Henrique', loc:'Rita Maria', av:'P', t:'Poke Campeche é viciante! Montagem caprichada, ingredientes fresquíssimos. Entrega super rápida pelo iFood também.' },
-  { n:'Mariana Costa', loc:'Jurerê',      av:'M', t:'Ambiente incrível, staff super simpático. O bowl vegano é perfeito. Recomendo para todo mundo!' },
-  { n:'Lucas Ferreira', loc:'Santa Mônica',av:'L', t:'Já testei várias pokerias em Floripa e Vibe Poké é disparada a melhor. Porções generosas e preço justo!' },
-  { n:'Isabela Santos', loc:'Campeche',   av:'I', t:'Fui pela primeira vez semana passada e já sou fã! O spicy tuna é simplesmente divino. Voltarei muitas vezes!' },
-  { n:'Rafael Oliveira', loc:'Jurerê',    av:'R', t:'Atendimento incrível, poke fresquíssimo. O ambiente da unidade do Jurerê é lindo. Obrigado Vibe Poké!' },
+const items = [
+  // ENTRADAS
+  { cat:'entradas',   name:'Edamame',             price:'R$ 22,90', desc:'Edamame cozido no vapor com flor de sal e azeite de gergelim. Leve, nutritivo e irresistível.',                       tags:['vegetariano','sem-gluten'] },
+  { cat:'entradas',   name:'Gyoza (6 unid.)',      price:'R$ 34,90', desc:'Dumplings artesanais grelhados com recheio de frango e legumes. Servidos com molho ponzu.',                           tags:['mais-pedido'] },
+  { cat:'entradas',   name:'Salada Wakame',        price:'R$ 24,90', desc:'Alga wakame temperada com molho de gergelim japones, cebolinha e semente de gergelim.',                               tags:['vegetariano','sem-gluten'] },
+  { cat:'entradas',   name:'Chips de Batata Doce', price:'R$ 19,90', desc:'Fatias finas de batata doce assadas ate ficarem crocantes. Saudavel e viciante.',                                     tags:['vegetariano','sem-gluten','novo'] },
+  // POKES
+  { cat:'pokes',      name:'Campeche',             price:'R$ 59,90', desc:'Nosso bowl signature. Salmao fresco, atum, manga, abacate cremoso, edamame e cobertura especial Vibe.',               tags:['mais-pedido','premium','sem-gluten'] },
+  { cat:'pokes',      name:'Aloha',                price:'R$ 54,90', desc:'Bowl tropical com salmao marinado, manga fresca, abacate, pepino crocante e molho ponzu citrico.',                    tags:['mais-pedido','sem-gluten'] },
+  { cat:'pokes',      name:'Havaiano',             price:'R$ 54,90', desc:'Atum fresco com wakame, edamame, abacate, cenoura e molho teriyaki artesanal.',                                      tags:['sem-gluten'] },
+  { cat:'pokes',      name:'Spicy Salmon',         price:'R$ 57,90', desc:'Para os amantes do picante. Salmao com sriracha mayo, pepino, tobiko, gergelim e chips de batata doce.',             tags:['apimentado','mais-pedido'] },
+  { cat:'pokes',      name:'Green Goddess',        price:'R$ 49,90', desc:'Bowl vegetariano. Tofu grelhado, abacate, edamame, manga, pepino e molho tahine verde.',                             tags:['vegetariano','sem-gluten','novo'] },
+  { cat:'pokes',      name:'Frango Grelhado',      price:'R$ 49,90', desc:'Peito de frango grelhado com tempero asiatico, tomate cereja, abacate, milho e molho mostarda mel.',                  tags:['sem-gluten'] },
+  // HOT
+  { cat:'hot',        name:'Yakisoba de Camarao',  price:'R$ 62,90', desc:'Macarrao yakisoba wok-fried com camarao suculento, brocolis, pimentao e molho agridoce especial.',                   tags:['mais-pedido','apimentado'] },
+  { cat:'hot',        name:'Frango Teriyaki Bowl', price:'R$ 52,90', desc:'Frango caramelizado no molho teriyaki artesanal, servido sobre arroz japones com legumes salteados.',                tags:[] },
+  // TEMAKIS
+  { cat:'temakis',    name:'Temaki Salmao',        price:'R$ 32,90', desc:'Cone de alga nori crocante com arroz temperado, salmao fresco, cream cheese e cebolinha.',                            tags:['mais-pedido'] },
+  { cat:'temakis',    name:'Temaki Atum',          price:'R$ 32,90', desc:'Cone de alga nori com atum fresco, abacate cremoso, pepino e molho especial.',                                       tags:[] },
+  { cat:'temakis',    name:'Temaki Skin',          price:'R$ 28,90', desc:'Pele de salmao crocante com cream cheese, pepino, cebolinha e molho ponzu. Um classico.',                            tags:['mais-pedido'] },
+  { cat:'temakis',    name:'Temaki Veggie',        price:'R$ 27,90', desc:'Opcao vegetariana com abacate, manga, pepino, cream cheese e molho tahine.',                                         tags:['vegetariano'] },
+  // BEBIDAS
+  { cat:'bebidas',    name:'Agua de Coco',         price:'R$ 12,90', desc:'Agua de coco natural gelada. Hidratacao pura e tropical.',                                                            tags:['sem-gluten'] },
+  { cat:'bebidas',    name:'Suco Natural',         price:'R$ 16,90', desc:'Sucos naturais da estacao: maracuja, abacaxi, limao, laranja ou melancia.',                                          tags:['sem-gluten'] },
+  { cat:'bebidas',    name:'Kombucha',             price:'R$ 18,90', desc:'Kombucha artesanal com probioticos naturais. Sabores: gengibre-limao, hibisco ou maracuja.',                         tags:['novo'] },
+  { cat:'bebidas',    name:'Refrigerante Lata',    price:'R$  9,90', desc:'Coca-Cola, Coca Zero, Guarana, Sprite ou Tonica.',                                                                   tags:[] },
+  // SOBREMESAS
+  { cat:'sobremesas', name:'Acai Bowl',            price:'R$ 34,90', desc:'Acai cremoso da Amazonia com granola artesanal, frutas da estacao, mel e coco ralado.',                              tags:['vegetariano','mais-pedido'] },
+  { cat:'sobremesas', name:'Mochi Ice Cream',      price:'R$ 22,90', desc:'Bolinho de arroz glutinoso recheado com sorvete premium. Sabores: matcha, morango ou baunilha.',                    tags:['vegetariano','novo'] },
+  // EXTRAS
+  { cat:'extras',     name:'Proteina Extra',       price:'R$ 18,90', desc:'Adicione mais proteina ao seu bowl: salmao, atum, frango ou tofu.',                                                  tags:['sem-gluten'] },
+  { cat:'extras',     name:'Porcao de Arroz',      price:'R$  9,90', desc:'Arroz shari temperado no estilo japones.',                                                                           tags:['vegetariano','sem-gluten'] },
+  { cat:'extras',     name:'Abacate Extra',        price:'R$ 10,90', desc:'Abacate fresco em fatias adicionado ao seu pedido.',                                                                 tags:['vegetariano','sem-gluten'] },
 ];
 
-const faqs = [
-  { q:'Quais são os horários de funcionamento?',       a:'Abrimos todos os dias da semana, de segunda a domingo, das 11h às 23h — incluindo feriados!' },
-  { q:'Vocês fazem delivery?',                         a:'Sim! Trabalhamos com delivery pelo iFood e também direto pelo WhatsApp. Consulte o raio de entrega de cada unidade.' },
-  { q:'Posso personalizar meu poke?',                  a:'Com certeza! Você escolhe a base (arroz, quinoa ou mix verde), proteína, toppings e molho. Montamos do jeito que você quiser.' },
-  { q:'Têm opções vegetarianas e veganas?',            a:'Sim! Temos várias opções veganas, incluindo tofu grelhado e proteínas plant-based. Todos os toppings podem ser adaptados.' },
-  { q:'Como faço para fazer um pedido?',               a:'Pelo iFood, pelo WhatsApp (48) 99174-3368 ou pessoalmente em uma de nossas 4 unidades. Escolha o jeito que preferir!' },
-  { q:'Os ingredientes são mesmo frescos todo dia?',   a:'Absolutamente! Todos os ingredientes são selecionados e renovados diariamente. Frescor é nossa principal prioridade.' },
-  { q:'Qual o tamanho dos bowls?',                     a:'Nossos bowls vêm em tamanho único generoso — perfeito para uma refeição completa. Também temos opção Kids!' },
-  { q:'Vocês têm opções sem glúten?',                  a:'Sim! Vários itens do nosso cardápio são naturalmente sem glúten. Informe sua restrição ao fazer o pedido.' },
-];
+const tagMeta = {
+  'mais-pedido':  { label:'Mais Pedido', cls:'b-coral' },
+  'premium':      { label:'Premium',     cls:'b-coral' },
+  'apimentado':   { label:'Picante',     cls:'b-coral' },
+  'novo':         { label:'Novo',        cls:'b-green' },
+  'vegetariano':  { label:'Veg',         cls:'b-green' },
+  'sem-gluten':   { label:'Sem Gluten',  cls:'b-gray'  },
+};
 
-// ── RENDER MENU ───────────────────────────────────────────────────────────────
-const menuGrid = document.getElementById('menu-grid');
-menu.forEach((item, i) => {
-  const d = ['delay-1','delay-2','delay-3','','delay-1','delay-2'][i] || '';
-  menuGrid.insertAdjacentHTML('beforeend', `
-    <div class="bg-white rounded-2xl overflow-hidden shadow-sm card reveal ${d}">
-      <div class="relative h-48 overflow-hidden">
-        <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-        <span class="absolute top-3 left-3 badge ${item.tc} bg-white/90 backdrop-blur-sm">${item.tag}</span>
-      </div>
-      <div class="p-5">
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">${item.name}</h3>
-        <p class="text-gray-500 text-sm leading-relaxed mb-4">${item.desc}</p>
-        <div class="flex items-center justify-between">
-          <span class="font-heading font-bold text-xl text-vgreen">${item.price}</span>
-          <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20pedir%20o%20${encodeURIComponent(item.name)}" target="_blank"
-             class="bg-vcoral text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-[#c9664d] transition-colors">
-            Pedir →
-          </a>
+let activeTab = 'pokes';
+
+// ── RENDER TABS ──────────────────────────────────────────────────────────────
+function renderTabs() {
+  const tabsEl = document.getElementById('menu-tabs');
+  tabsEl.innerHTML = categories.map(c => `
+    <button onclick="setTab('${c.id}')" id="tab-${c.id}"
+      class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold text-gray-500 hover:text-vgreen whitespace-nowrap ${c.id === activeTab ? 'active' : ''}">
+      ${c.label}
+    </button>`).join('');
+}
+
+// ── RENDER ITEMS ─────────────────────────────────────────────────────────────
+function renderItems() {
+  const list = items.filter(i => i.cat === activeTab);
+  const el = document.getElementById('menu-items');
+  el.innerHTML = list.map(item => {
+    const badges = item.tags.map(t => {
+      const m = tagMeta[t];
+      return m ? `<span class="badge ${m.cls}">${m.label}</span>` : '';
+    }).join('');
+    return `
+      <div class="menu-item py-5 flex items-start justify-between gap-4">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center flex-wrap gap-2 mb-1">
+            <h3 class="font-heading font-semibold text-vink text-base">${item.name}</h3>
+            ${badges}
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed">${item.desc}</p>
         </div>
-      </div>
-    </div>`);
-});
+        <div class="flex-shrink-0 text-right">
+          <span class="font-heading font-bold text-lg text-vgreen whitespace-nowrap">${item.price}</span>
+        </div>
+      </div>`;
+  }).join('');
+}
 
-// ── RENDER REVIEWS ────────────────────────────────────────────────────────────
-const reviewsGrid = document.getElementById('reviews-grid');
+function setTab(id) {
+  activeTab = id;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  renderItems();
+}
+
+renderTabs();
+renderItems();
+
+// ── REVIEWS ──────────────────────────────────────────────────────────────────
+const reviews = [
+  { n:'Ana Carolina',    loc:'Campeche',     av:'A', t:'O melhor poke de Floripa sem duvidas! Sempre fresco, ingredientes de qualidade e atendimento impecavel. Virei cliente fiel!' },
+  { n:'Pedro Henrique',  loc:'Rita Maria',   av:'P', t:'Poke Campeche e viciante! Montagem caprichada, ingredientes fresquissimos. Entrega super rapida pelo iFood tambem.' },
+  { n:'Mariana Costa',   loc:'Jurere',       av:'M', t:'Ambiente incrivel, staff super simpatico. O bowl vegano e perfeito. Recomendo para todo mundo!' },
+  { n:'Lucas Ferreira',  loc:'Santa Monica', av:'L', t:'Ja testei varias pokerias em Floripa e Vibe Poke e disparada a melhor. Porcoes generosas e preco justo!' },
+  { n:'Isabela Santos',  loc:'Campeche',     av:'I', t:'Fui pela primeira vez semana passada e ja sou fa! O spicy salmon e simplesmente divino. Voltarei muitas vezes!' },
+  { n:'Rafael Oliveira', loc:'Jurere',       av:'R', t:'Atendimento incrivel, poke fresquissimo. O ambiente da unidade do Jurere e lindo. Obrigado Vibe Poke!' },
+];
+const rg = document.getElementById('reviews-grid');
 reviews.forEach((r, i) => {
-  const d = ['delay-1','delay-2','delay-3','','delay-1','delay-2'][i] || '';
-  reviewsGrid.insertAdjacentHTML('beforeend', `
+  const d = ['d1','d2','d3','','d1','d2'][i] || '';
+  rg.insertAdjacentHTML('beforeend', `
     <div class="bg-white/5 border border-white/10 rounded-2xl p-6 card reveal ${d}">
       <div class="flex items-start gap-4 mb-4">
         <div class="w-10 h-10 rounded-full bg-vgreen flex items-center justify-center font-bold text-white flex-shrink-0 font-heading">${r.av}</div>
         <div class="flex-1 min-w-0">
           <div class="font-semibold text-white truncate">${r.n}</div>
-          <div class="text-white/45 text-xs">${r.loc}</div>
+          <div class="text-white/40 text-xs">${r.loc}</div>
         </div>
-        <span class="text-[#F59E0B] text-sm flex-shrink-0">★★★★★</span>
+        <span class="text-[#F59E0B] text-sm flex-shrink-0 tracking-wide">★★★★★</span>
       </div>
-      <p class="text-white/65 text-sm leading-relaxed">"${r.t}"</p>
+      <p class="text-white/60 text-sm leading-relaxed">"${r.t}"</p>
     </div>`);
 });
 
-// ── RENDER FAQ ────────────────────────────────────────────────────────────────
-const faqList = document.getElementById('faq-list');
+// ── FAQ ──────────────────────────────────────────────────────────────────────
+const faqs = [
+  { q:'Quais sao os horarios de funcionamento?',  a:'Abrimos todos os dias da semana, de segunda a domingo, das 11h as 23h — incluindo feriados!' },
+  { q:'Voces fazem delivery?',                    a:'Sim! Trabalhamos com delivery pelo iFood e tambem direto pelo WhatsApp (48) 99174-3368.' },
+  { q:'Posso personalizar meu poke?',             a:'Com certeza! Voce escolhe a base (arroz, quinoa ou mix verde), proteina, toppings e molho. Montamos do jeito que voce quiser.' },
+  { q:'Tem opcoes vegetarianas e veganas?',       a:'Sim! Temos varias opcoes veganas, incluindo tofu grelhado e proteinas plant-based. Todos os toppings podem ser adaptados.' },
+  { q:'Os ingredientes sao frescos todo dia?',    a:'Absolutamente! Todos os ingredientes sao selecionados e renovados diariamente. Frescor e nossa principal prioridade.' },
+  { q:'Qual o tamanho dos bowls?',               a:'Nossos bowls vem em tamanho unico generoso — perfeito para uma refeicao completa. Tambem temos opcao Kids!' },
+  { q:'Voces tem opcoes sem gluten?',             a:'Sim! Varios itens do nosso cardapio sao naturalmente sem gluten. Informe sua restricao ao fazer o pedido.' },
+  { q:'Como faco para fazer um pedido?',          a:'Pelo iFood, pelo WhatsApp (48) 99174-3368 ou pessoalmente em uma de nossas 4 unidades. Escolha o jeito que preferir!' },
+];
+const fl = document.getElementById('faq-list');
 faqs.forEach((f, i) => {
-  const id = 'faq-' + i;
-  faqList.insertAdjacentHTML('beforeend', `
-    <div class="bg-vcream rounded-2xl overflow-hidden reveal" style="transition-delay:${i*.05}s">
-      <button onclick="toggleFaq('${id}')" class="w-full text-left flex items-center justify-between p-6 gap-4">
-        <span class="font-heading font-semibold text-vink hover:text-vgreen transition-colors text-sm sm:text-base">${f.q}</span>
-        <span id="${id}-icon" class="faq-icon text-vgreen text-2xl font-light flex-shrink-0">+</span>
+  fl.insertAdjacentHTML('beforeend', `
+    <div class="faq-item bg-vcream rounded-2xl overflow-hidden reveal" style="transition-delay:${i*.05}s">
+      <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between p-6 gap-4">
+        <span class="font-heading font-semibold text-vink text-sm sm:text-base">${f.q}</span>
+        <span class="faq-icon text-vgreen text-2xl font-light flex-shrink-0 leading-none">+</span>
       </button>
-      <div id="${id}" class="faq-body">
-        <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">${f.a}</p>
-      </div>
+      <div class="faq-body"><p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">${f.a}</p></div>
     </div>`);
 });
 
-function toggleFaq(id) {
-  const body = document.getElementById(id);
-  const icon = document.getElementById(id + '-icon');
-  const isOpen = body.classList.contains('open');
-  document.querySelectorAll('.faq-body.open').forEach(el => {
+function toggleFaq(btn) {
+  const item  = btn.closest('.faq-item');
+  const body  = item.querySelector('.faq-body');
+  const icon  = item.querySelector('.faq-icon');
+  const open  = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => {
     el.classList.remove('open');
-    document.getElementById(el.id + '-icon').textContent = '+';
-    document.getElementById(el.id + '-icon').style.transform = 'rotate(0)';
+    el.querySelector('.faq-body').classList.remove('open');
+    el.querySelector('.faq-icon').textContent = '+';
   });
-  if (!isOpen) {
-    body.classList.add('open');
-    icon.textContent = '×';
-  }
+  if (!open) { item.classList.add('open'); body.classList.add('open'); icon.textContent = '×'; }
 }
 
 // ── NAVBAR SCROLL ─────────────────────────────────────────────────────────────
@@ -670,9 +784,8 @@ function closeDrawer() {
 // ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
