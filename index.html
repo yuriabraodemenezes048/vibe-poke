@@ -1,18 +1,98 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" dir="ltr">
 <head>
+  <!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  Vibe Poke — Website Oficial                                ║
+    ║  Auditoria Técnica: Acessibilidade WCAG 2.2 AA             ║
+    ║                     SEO técnico completo                    ║
+    ║                     LGPD / Cookie Consent                  ║
+    ║                     Performance / Security                  ║
+    ╚══════════════════════════════════════════════════════════════╝
+  -->
+
+  <!-- ① Google Consent Mode v2 — DEVE ser o primeiro script -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage:     'denied',
+      ad_storage:            'denied',
+      ad_user_data:          'denied',
+      ad_personalization:    'denied',
+      functionality_storage: 'granted',
+      security_storage:      'granted',
+      wait_for_update:       500
+    });
+    gtag('js', new Date());
+    /* Restaura consentimento salvo antes de qualquer tag */
+    (function(){
+      try {
+        var s = JSON.parse(localStorage.getItem('vp_consent')||'null');
+        if (s) gtag('consent','update',{
+          analytics_storage:  s.analytics  ? 'granted' : 'denied',
+          ad_storage:         s.marketing  ? 'granted' : 'denied',
+          ad_user_data:       s.marketing  ? 'granted' : 'denied',
+          ad_personalization: s.marketing  ? 'granted' : 'denied'
+        });
+      } catch(e){}
+    })();
+  </script>
+
+  <!-- ② Charset e Viewport -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ③ Meta primários -->
   <title>Vibe Poke | Poke Bowls Fresquinhos em Florianópolis</title>
-  <meta name="description" content="Os melhores poke bowls de Florianópolis. 4 unidades: Campeche, Rita Maria, Jurerê e Santa Mônica. Ingredientes frescos, sabores incríveis.">
-  <meta property="og:title" content="Vibe Poke | Poke Bowls em Florianópolis">
-  <meta property="og:description" content="Os melhores poke bowls de Florianópolis. Ingredientes frescos, sabores incríveis. 4 unidades!">
-  <meta property="og:image" content="images/og-image.jpg">
-  <meta property="og:type" content="restaurant">
-  <meta name="theme-color" content="#4E7A5C">
+  <meta name="description"
+        content="Os melhores poke bowls de Florianópolis. 4 unidades: Campeche, Rita Maria, Jurerê e Santa Mônica. Ingredientes frescos, combinações exclusivas e uma experiência que faz você querer voltar.">
+  <meta name="keywords"
+        content="poke bowl florianópolis, vibe poke, comida havaiana, campeche, jurerê, delivery floripa, poke salmão, poke atum, poke bowl sc">
+  <meta name="robots"         content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author"         content="Vibe Poke">
+  <meta name="theme-color"    content="#4E7A5C">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- ④ Canonical -->
+  <link rel="canonical" href="https://vibepoke.com.br/">
+
+  <!-- ⑤ Open Graph -->
+  <meta property="og:type"         content="restaurant">
+  <meta property="og:url"          content="https://vibepoke.com.br/">
+  <meta property="og:title"        content="Vibe Poke | Poke Bowls em Florianópolis">
+  <meta property="og:description"  content="Os melhores poke bowls de Florianópolis. Ingredientes frescos, combinações exclusivas. 4 unidades!">
+  <meta property="og:image"        content="https://vibepoke.com.br/images/og-image.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"    content="Bowl de poke da Vibe Poke — Florianópolis">
+  <meta property="og:locale"       content="pt_BR">
+  <meta property="og:site_name"    content="Vibe Poke">
+
+  <!-- ⑥ Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@vibepoke">
+  <meta name="twitter:title"       content="Vibe Poke | Poke Bowls em Florianópolis">
+  <meta name="twitter:description" content="Os melhores poke bowls de Florianópolis. Ingredientes frescos, combinações exclusivas.">
+  <meta name="twitter:image"       content="https://vibepoke.com.br/images/og-image.jpg">
+  <meta name="twitter:image:alt"   content="Bowl de poke da Vibe Poke">
+
+  <!-- ⑦ Security meta (complemento aos headers HTTP) -->
+  <meta http-equiv="X-Content-Type-Options"  content="nosniff">
+  <meta http-equiv="Referrer-Policy"         content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy"      content="geolocation=(), microphone=(), camera=()">
+
+  <!-- ⑧ Preload — recursos críticos LCP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/photo-1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="images/logo.png">
+
+  <!-- ⑨ Fontes (display=swap evita FOIT) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+  <!-- ⑩ Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,23 +112,141 @@
       }
     }
   </script>
+
+  <!-- ⑪ Schema.org JSON-LD — Restaurant + LocalBusiness (4 unidades) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Vibe Poke",
+      "description": "Os melhores poke bowls de Florianópolis. Ingredientes frescos, combinações exclusivas e uma experiência que faz você querer voltar.",
+      "url": "https://vibepoke.com.br",
+      "telephone": "+554899174-3368",
+      "priceRange": "$$",
+      "servesCuisine": ["Hawaiiana","Japonesa","Saudável"],
+      "logo": "https://vibepoke.com.br/images/logo.png",
+      "image": "https://vibepoke.com.br/images/og-image.jpg",
+      "sameAs": [
+        "https://www.instagram.com/vibepoke/",
+        "https://www.facebook.com/vibepoke"
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "11:00",
+        "closes": "23:00"
+      }],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1300",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "hasMap": "https://maps.google.com/?q=Vibe+Poke+Florianópolis",
+      "currenciesAccepted": "BRL",
+      "paymentAccepted": "Cartão de crédito, débito, PIX, dinheiro"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Vibe Poke Campeche",
+      "url": "https://vibepoke.com.br",
+      "telephone": "+5548991743368",
+      "address": {"@type":"PostalAddress","streetAddress":"Av. Campeche, 2480","addressLocality":"Florianópolis","addressRegion":"SC","postalCode":"88063-700","addressCountry":"BR"},
+      "geo": {"@type":"GeoCoordinates","latitude":"-27.7150","longitude":"-48.4780"},
+      "openingHours": "Mo-Su 11:00-23:00"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Vibe Poke Rita Maria",
+      "url": "https://vibepoke.com.br",
+      "telephone": "+5548991743368",
+      "address": {"@type":"PostalAddress","streetAddress":"Al. Annita Hoepcke da Silva, 112","addressLocality":"Florianópolis","addressRegion":"SC","addressCountry":"BR"},
+      "openingHours": "Mo-Su 11:00-23:00"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Vibe Poke Jurerê",
+      "url": "https://vibepoke.com.br",
+      "telephone": "+5548991743368",
+      "address": {"@type":"PostalAddress","streetAddress":"Rod. Jorn. Maurício S. Sobrinho, 5862","addressLocality":"Florianópolis","addressRegion":"SC","addressCountry":"BR"},
+      "openingHours": "Mo-Su 11:00-23:00"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Vibe Poke Santa Mônica",
+      "url": "https://vibepoke.com.br",
+      "telephone": "+5548991743368",
+      "address": {"@type":"PostalAddress","streetAddress":"Av. Me. Benvenuta, 1168","addressLocality":"Florianópolis","addressRegion":"SC","addressCountry":"BR"},
+      "openingHours": "Mo-Su 11:00-23:00"
+    }
+  ]
+  </script>
+
+  <!-- ⑫ Estilos -->
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    /* ── Reset / Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: #FAFAF8; color: #1A1A1A; overflow-x: hidden; }
     h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
 
-    /* Navbar */
+    /* ── WCAG 2.4.7 — Focus visível para teclado */
+    :focus-visible {
+      outline: 3px solid #4E7A5C;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    /* Remove outline do mouse mas mantém para teclado */
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* ── WCAG 2.4.1 — Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: #4E7A5C;
+      color: #fff;
+      padding: .5rem 1.25rem;
+      border-radius: 0 0 8px 8px;
+      font-weight: 700;
+      font-size: .875rem;
+      z-index: 9999;
+      transition: top .2s ease;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── WCAG 2.3.3 — Respeita preferência de movimento reduzido */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration:       .01ms !important;
+        animation-iteration-count: 1    !important;
+        transition-duration:      .01ms !important;
+        scroll-behavior:          auto  !important;
+      }
+      .slide { transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .bounce { animation: none !important; }
+      .pulse  { animation: none !important; }
+    }
+
+    /* ── Navbar */
     #navbar { transition: background .35s ease, box-shadow .35s ease; }
-    #navbar.solid { background: rgba(250,250,248,.96); backdrop-filter: blur(14px); box-shadow: 0 1px 24px rgba(0,0,0,.08); }
+    #navbar.solid { background: rgba(250,250,248,.97); backdrop-filter: blur(14px); box-shadow: 0 1px 24px rgba(0,0,0,.08); }
     #navbar.solid .nav-link { color: #1A1A1A !important; opacity: .75; }
     #navbar.solid #nav-logo-img { filter: none; }
 
-    /* Hero slideshow */
+    /* ── Hero slideshow */
     .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
     .slide.active { opacity: 1; }
 
-    /* Scroll reveal */
+    /* ── Scroll reveal */
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.in { opacity: 1; transform: none; }
     .d1 { transition-delay: .1s; }
@@ -56,736 +254,1117 @@
     .d3 { transition-delay: .3s; }
     .d4 { transition-delay: .4s; }
 
-    /* Card hover */
+    /* ── Hover card */
     .card { transition: transform .3s ease, box-shadow .3s ease; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.11); }
 
-    /* FAQ */
+    /* ── FAQ accordion */
     .faq-body { max-height: 0; overflow: hidden; transition: max-height .45s ease; }
-    .faq-body.open { max-height: 260px; }
-    .faq-icon { transition: transform .3s ease; display: inline-block; }
+    .faq-body.open { max-height: 300px; }
+    .faq-icon { transition: transform .3s ease; display: inline-block; line-height: 1; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-    /* Menu tabs */
-    .tab-btn { border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    /* ── Menu tabs */
+    .tab-btn { border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; background: none; cursor: pointer; }
     .tab-btn.active { color: #4E7A5C; border-color: #4E7A5C; }
+    .tab-btn:focus-visible { outline-offset: -2px; }
 
-    /* Menu item */
+    /* ── Menu item */
     .menu-item { border-bottom: 1px solid #f0f0ee; }
     .menu-item:last-child { border-bottom: none; }
 
-    /* Badges */
-    .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px; font-size: .65rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-    .b-coral  { background: rgba(224,122,95,.12); color: #E07A5F; }
-    .b-green  { background: rgba(78,122,92,.12);  color: #4E7A5C; }
+    /* ── Badges */
+    .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px;
+             font-size: .65rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .b-coral { background: rgba(224,122,95,.12); color: #c25a3e; } /* coral escurecido para contraste AA */
+    .b-green  { background: rgba(78,122,92,.12);  color: #3a5c44; } /* verde escurecido para contraste AA */
     .b-gray   { background: rgba(26,26,26,.07);   color: #555; }
 
-    /* Mobile drawer */
+    /* ── Mobile drawer */
     #mobile-drawer  { transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); }
     #mobile-drawer.open  { transform: translateX(0); }
     #drawer-overlay      { opacity: 0; pointer-events: none; transition: opacity .35s ease; }
     #drawer-overlay.open { opacity: 1; pointer-events: all; }
 
-    /* Bounce */
-    @keyframes bounce-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-    .bounce { animation: bounce-y 1.6s ease-in-out infinite; }
+    /* ── Cookie banner */
+    #cookie-banner { transform: translateY(100%); transition: transform .4s cubic-bezier(.4,0,.2,1); }
+    #cookie-banner.show { transform: translateY(0); }
 
-    /* Pulse */
-    @keyframes pulse-dot { 0%,100% { transform: scale(1); opacity:.7; } 50% { transform: scale(1.4); opacity:1; } }
-    .pulse { animation: pulse-dot 2s ease-in-out infinite; }
+    /* ── Cookie modal */
+    #cookie-modal { display: none; }
+    #cookie-modal.show { display: flex; }
 
-    /* Scrollbar */
+    /* ── Toggle switch */
+    .sw-track { transition: background .2s; }
+    .sw-track.on { background: #4E7A5C !important; }
+    .sw-thumb { transition: transform .2s; }
+    .sw-track.on .sw-thumb { transform: translateX(16px); }
+
+    /* ── Scrollbar */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #eee; }
     ::-webkit-scrollbar-thumb { background: #4E7A5C; border-radius: 3px; }
+
+    /* ── Animações */
+    @keyframes bounce-y { 0%,100% { transform:translateY(0); } 50% { transform:translateY(8px); } }
+    .bounce { animation: bounce-y 1.6s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100% { transform:scale(1);opacity:.7; } 50% { transform:scale(1.4);opacity:1; } }
+    .pulse { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* ── Screen reader only */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
   </style>
 </head>
+
 <body>
+  <!-- ══════════════════════════════════════════════
+       WCAG 2.4.1 — Skip navigation
+  ══════════════════════════════════════════════ -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-<!-- ══════════════════════════════════════════
-     NAVBAR
-══════════════════════════════════════════ -->
-<nav id="navbar" class="fixed top-0 inset-x-0 z-50 px-6 py-4">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-
-    <!-- Logo -->
-    <a href="#" class="flex items-center">
-      <img id="nav-logo-img" src="images/logo.png" alt="Vibe Poke" class="h-9 w-auto brightness-0 invert">
-    </a>
-
-    <!-- Desktop links -->
-    <div class="hidden md:flex items-center gap-7">
-      <a href="#sobre"      class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Sobre</a>
-      <a href="#cardapio"   class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Cardapio</a>
-      <a href="#avaliacoes" class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Avaliações</a>
-      <a href="#lojas"      class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Lojas</a>
-      <a href="#faq"        class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">FAQ</a>
+  <!-- ══════════════════════════════════════════════
+       LGPD — Cookie Consent Banner
+  ══════════════════════════════════════════════ -->
+  <div id="cookie-banner"
+       role="dialog"
+       aria-modal="false"
+       aria-live="polite"
+       aria-label="Aviso de cookies e privacidade"
+       class="fixed bottom-0 inset-x-0 z-[200] bg-white border-t border-gray-100 shadow-2xl">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-4 p-4 md:p-5">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm text-gray-700 leading-relaxed">
+          Utilizamos cookies para melhorar sua experiência, analisar tráfego e personalizar conteúdo.
+          Ao clicar em <strong>"Aceitar todos"</strong>, você concorda com nossa
+          <a href="politica-de-cookies.html" class="text-vgreen underline font-semibold hover:text-[#3a5c44]">Política de Cookies</a>
+          e
+          <a href="politica-de-privacidade.html" class="text-vgreen underline font-semibold hover:text-[#3a5c44]">Política de Privacidade</a>.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 flex-shrink-0">
+        <button type="button" id="btn-essential"
+                class="px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-full text-sm font-semibold hover:border-vink focus:border-vink transition-colors"
+                aria-label="Aceitar apenas cookies essenciais">
+          Apenas Essenciais
+        </button>
+        <button type="button" id="btn-settings"
+                class="px-3 py-2 text-gray-500 text-sm hover:text-vink underline transition-colors"
+                aria-label="Personalizar configurações de cookies">
+          Personalizar
+        </button>
+        <button type="button" id="btn-accept-all"
+                class="px-5 py-2 bg-vgreen text-white rounded-full text-sm font-semibold hover:bg-[#3d6149] focus:bg-[#3d6149] transition-colors shadow-md"
+                aria-label="Aceitar todos os cookies">
+          Aceitar Todos
+        </button>
+      </div>
     </div>
+  </div>
 
-    <!-- CTA + hamburger -->
-    <div class="flex items-center gap-3">
-      <a href="https://wa.me/5548991743368" target="_blank"
-         class="hidden sm:flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#1DAD55] transition-colors shadow-md">
-        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <button id="menu-btn" class="md:hidden text-white p-1.5" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  <!-- Cookie Settings Modal -->
+  <div id="cookie-modal"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="cookie-modal-title"
+       class="fixed inset-0 z-[300] items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl" role="document">
+      <h2 id="cookie-modal-title" class="font-heading font-bold text-xl text-vink mb-1">Configurações de Cookies</h2>
+      <p class="text-gray-500 text-sm mb-6">Escolha quais cookies aceitar. Os essenciais são necessários para o funcionamento do site.</p>
+      <div class="space-y-3 mb-6">
+        <!-- Essencial — sempre ativo -->
+        <div class="flex items-start justify-between gap-4 p-4 bg-gray-50 rounded-xl">
+          <div>
+            <p class="font-semibold text-vink text-sm">Essenciais</p>
+            <p class="text-gray-500 text-xs mt-0.5">Necessários para funcionamento básico. Sempre ativos.</p>
+          </div>
+          <div class="flex-shrink-0 w-10 h-6 bg-vgreen rounded-full relative opacity-60 cursor-not-allowed" aria-hidden="true">
+            <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+          </div>
+        </div>
+        <!-- Analytics -->
+        <div class="flex items-start justify-between gap-4 p-4 bg-gray-50 rounded-xl">
+          <div>
+            <p class="font-semibold text-vink text-sm">Analytics</p>
+            <p class="text-gray-500 text-xs mt-0.5">Nos ajudam a entender como você usa o site (Google Analytics).</p>
+          </div>
+          <button type="button" role="switch" id="sw-analytics" aria-checked="false"
+                  class="sw-track flex-shrink-0 w-10 h-6 bg-gray-300 rounded-full relative"
+                  aria-label="Ativar cookies de analytics">
+            <span class="sw-thumb absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow"></span>
+          </button>
+        </div>
+        <!-- Marketing -->
+        <div class="flex items-start justify-between gap-4 p-4 bg-gray-50 rounded-xl">
+          <div>
+            <p class="font-semibold text-vink text-sm">Marketing</p>
+            <p class="text-gray-500 text-xs mt-0.5">Usados para personalizar anúncios e medir campanhas.</p>
+          </div>
+          <button type="button" role="switch" id="sw-marketing" aria-checked="false"
+                  class="sw-track flex-shrink-0 w-10 h-6 bg-gray-300 rounded-full relative"
+                  aria-label="Ativar cookies de marketing">
+            <span class="sw-thumb absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow"></span>
+          </button>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <button type="button" id="btn-modal-cancel"
+                class="flex-1 px-4 py-2.5 border-2 border-gray-200 text-gray-600 rounded-xl font-semibold text-sm hover:border-gray-400 transition-colors">
+          Cancelar
+        </button>
+        <button type="button" id="btn-modal-save"
+                class="flex-1 px-4 py-2.5 bg-vgreen text-white rounded-xl font-semibold text-sm hover:bg-[#3d6149] transition-colors">
+          Salvar Preferências
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <header>
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 px-6 py-4"
+         role="navigation" aria-label="Navegação principal">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#" aria-label="Vibe Poke — Página inicial" class="flex items-center">
+          <img id="nav-logo-img"
+               src="images/logo.png"
+               alt="Vibe Poke"
+               width="120" height="36"
+               class="h-9 w-auto brightness-0 invert"
+               onerror="this.style.display='none';document.getElementById('nav-logo-txt').style.display='block'">
+          <span id="nav-logo-txt" style="display:none"
+                class="font-heading font-bold text-xl tracking-tight text-white" aria-hidden="true">
+            vibe poke
+          </span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-7">
+          <a href="#sobre"      class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Sobre</a>
+          <a href="#cardapio"   class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Cardápio</a>
+          <a href="#avaliacoes" class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Avaliações</a>
+          <a href="#lojas"      class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">Lojas</a>
+          <a href="#faq"        class="nav-link text-white/85 text-sm font-medium hover:text-white transition-colors">FAQ</a>
+        </div>
+
+        <!-- CTA + hamburger -->
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/5548991743368" target="_blank" rel="noopener noreferrer"
+             class="hidden sm:flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#1DAD55] transition-colors shadow-md"
+             aria-label="Entrar em contato pelo WhatsApp">
+            <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <button type="button" id="menu-btn"
+                  class="md:hidden text-white p-1.5"
+                  aria-label="Abrir menu de navegação"
+                  aria-expanded="false"
+                  aria-controls="mobile-drawer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Overlay do drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" aria-hidden="true"></div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Menu de navegação"
+       class="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl flex flex-col p-8">
+    <div class="flex items-center justify-between mb-10">
+      <img src="images/logo.png" alt="Vibe Poke" width="100" height="30" class="h-8 w-auto"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none" class="font-heading font-bold text-lg text-vink tracking-tight">vibe poke</span>
+      <button type="button" id="close-drawer"
+              class="text-gray-400 hover:text-vink p-1"
+              aria-label="Fechar menu de navegação">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
       </button>
     </div>
+    <nav aria-label="Menu móvel">
+      <ul class="flex flex-col gap-5 list-none" role="list">
+        <li><a href="#sobre"      class="text-base font-semibold text-vink hover:text-vgreen transition-colors">Sobre</a></li>
+        <li><a href="#cardapio"   class="text-base font-semibold text-vink hover:text-vgreen transition-colors">Cardápio</a></li>
+        <li><a href="#avaliacoes" class="text-base font-semibold text-vink hover:text-vgreen transition-colors">Avaliações</a></li>
+        <li><a href="#lojas"      class="text-base font-semibold text-vink hover:text-vgreen transition-colors">Lojas</a></li>
+        <li><a href="#faq"        class="text-base font-semibold text-vink hover:text-vgreen transition-colors">FAQ</a></li>
+        <li><a href="#contato"    class="text-base font-semibold text-vink hover:text-vgreen transition-colors">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="mt-auto flex flex-col gap-3">
+      <a href="https://wa.me/5548991743368" target="_blank" rel="noopener noreferrer"
+         class="flex items-center justify-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-xl font-bold text-sm"
+         aria-label="Pedir no WhatsApp">Pedir no WhatsApp</a>
+      <a href="https://www.ifood.com.br" target="_blank" rel="noopener noreferrer"
+         class="flex items-center justify-center gap-2 bg-vcoral text-white px-4 py-3 rounded-xl font-bold text-sm"
+         aria-label="Pedir no iFood">Pedir no iFood</a>
+    </div>
   </div>
-</nav>
 
-<!-- Overlay + Drawer -->
-<div id="drawer-overlay" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" onclick="closeDrawer()"></div>
-<div id="mobile-drawer" class="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl flex flex-col p-8">
-  <div class="flex items-center justify-between mb-10">
-    <img src="images/logo.png" alt="Vibe Poke" class="h-8 w-auto">
-    <button onclick="closeDrawer()" class="text-gray-400 hover:text-vink">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-  </div>
-  <nav class="flex flex-col gap-5 text-base font-semibold text-vink">
-    <a href="#sobre"      onclick="closeDrawer()">Sobre</a>
-    <a href="#cardapio"   onclick="closeDrawer()">Cardapio</a>
-    <a href="#avaliacoes" onclick="closeDrawer()">Avaliações</a>
-    <a href="#lojas"      onclick="closeDrawer()">Lojas</a>
-    <a href="#faq"        onclick="closeDrawer()">FAQ</a>
-    <a href="#contato"    onclick="closeDrawer()">Contato</a>
-  </nav>
-  <div class="mt-auto flex flex-col gap-3">
-    <a href="https://wa.me/5548991743368" target="_blank"
-       class="flex items-center justify-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-xl font-bold text-sm">Pedir no WhatsApp</a>
-    <a href="https://www.ifood.com.br" target="_blank"
-       class="flex items-center justify-center gap-2 bg-vcoral text-white px-4 py-3 rounded-xl font-bold text-sm">Pedir no iFood</a>
-  </div>
-</div>
+  <!-- ══════════════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ══════════════════════════════════════════════ -->
+  <main id="main-content" tabindex="-1">
 
+    <!-- ── HERO ── -->
+    <section aria-label="Apresentação — Vibe Poke" class="relative h-screen min-h-[600px] overflow-hidden">
+      <!-- Slideshow com ARIA para carrossel -->
+      <div role="region" aria-label="Galeria de imagens" aria-roledescription="carrossel">
+        <!-- Primeira imagem: eager + fetchpriority para LCP -->
+        <div class="slide active" role="group" aria-label="Foto 1 de 4" aria-roledescription="slide">
+          <img src="images/photo-1.jpg"
+               alt="Bowl de poke salmão com abacate, manga e edamame da Vibe Poke"
+               width="1920" height="1080"
+               fetchpriority="high"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="slide" role="group" aria-label="Foto 2 de 4" aria-roledescription="slide">
+          <img src="images/photo-2.jpg"
+               alt="Poke bowl colorido com ingredientes frescos na Vibe Poke"
+               width="1920" height="1080"
+               loading="lazy"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="slide" role="group" aria-label="Foto 3 de 4" aria-roledescription="slide">
+          <img src="images/photo-3.jpg"
+               alt="Ambiente da Vibe Poke — restaurante moderno em Florianópolis"
+               width="1920" height="1080"
+               loading="lazy"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="slide" role="group" aria-label="Foto 4 de 4" aria-roledescription="slide">
+          <img src="images/photo-4.jpg"
+               alt="Ingredientes frescos selecionados diariamente na Vibe Poke"
+               width="1920" height="1080"
+               loading="lazy"
+               class="w-full h-full object-cover">
+        </div>
+      </div>
 
-<!-- ══════════════════════════════════════════
-     HERO
-══════════════════════════════════════════ -->
-<section class="relative h-screen min-h-[600px] overflow-hidden">
-  <div class="absolute inset-0">
-    <div class="slide active"><img src="images/photo-1.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
-    <div class="slide"><img src="images/photo-2.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
-    <div class="slide"><img src="images/photo-3.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
-    <div class="slide"><img src="images/photo-4.jpg" alt="Vibe Poke" class="w-full h-full object-cover"></div>
-  </div>
-  <div class="absolute inset-0" style="background:linear-gradient(105deg,rgba(26,26,26,.80) 0%,rgba(26,26,26,.35) 55%,transparent 100%)"></div>
+      <!-- Overlay -->
+      <div class="absolute inset-0" style="background:linear-gradient(105deg,rgba(26,26,26,.80) 0%,rgba(26,26,26,.35) 55%,transparent 100%)" aria-hidden="true"></div>
 
-  <div class="relative z-10 h-full flex items-center">
-    <div class="max-w-6xl mx-auto px-6 w-full">
-      <div class="max-w-xl">
-        <!-- Rating chip -->
-        <div class="inline-flex items-center gap-2 bg-white/12 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-          <span class="w-2 h-2 bg-[#4E7A5C] rounded-full pulse"></span>
-          ★ 4.8 &nbsp;·&nbsp; +1.300 avaliações &nbsp;·&nbsp; 4 unidades em Floripa
+      <!-- Conteúdo -->
+      <div class="relative z-10 h-full flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full">
+          <div class="max-w-xl">
+            <!-- Chip de avaliação -->
+            <div class="inline-flex items-center gap-2 bg-white/12 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
+                 aria-label="Avaliação: 4.8 estrelas com mais de 1300 avaliações em 4 unidades em Florianópolis">
+              <span class="w-2 h-2 bg-vgreen rounded-full pulse" aria-hidden="true"></span>
+              <span>★ 4.8 · +1.300 avaliações · 4 unidades em Floripa</span>
+            </div>
+
+            <!-- H1 — único na página (WCAG 1.3.1) -->
+            <h1 class="font-heading font-extrabold text-5xl sm:text-6xl md:text-7xl text-white leading-[1.06] mb-5">
+              O Poke Que<br>Vai Além do<br><span style="color:#E07A5F">Sabor</span>
+            </h1>
+
+            <p class="text-white text-lg mb-9 leading-relaxed">
+              Ingredientes frescos, combinações exclusivas e uma<br class="hidden sm:block">
+              experiência que faz você querer voltar.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center gap-2 bg-vcoral hover:bg-[#c9664d] text-white px-7 py-3.5 rounded-full font-bold shadow-xl hover:scale-105 transition-all"
+                 aria-label="Fazer pedido pelo WhatsApp agora">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+                Pedir Agora
+              </a>
+              <a href="#cardapio"
+                 class="flex items-center gap-2 border-2 border-white/50 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-all">
+                Ver Cardápio
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <!-- Chips de localização -->
+            <div class="flex flex-wrap gap-2 mt-8" role="list" aria-label="Unidades disponíveis">
+              <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium" role="listitem">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Campeche
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium" role="listitem">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Rita Maria
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium" role="listitem">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Jurerê
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium" role="listitem">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Santa Mônica
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seta indicadora -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 bounce" aria-hidden="true">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+      </div>
+    </section>
+
+    <!-- ── DIFERENCIAIS ── -->
+    <section aria-labelledby="h2-diferenciais" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+          <p class="text-xs font-bold tracking-widest text-vcoral uppercase">Por que Vibe Poke?</p>
+          <h2 id="h2-diferenciais" class="font-heading font-bold text-4xl text-vink mt-3">O que nos torna especiais</h2>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6" role="list">
+          <article class="text-center p-6 rounded-2xl bg-vcream card reveal d1" role="listitem">
+            <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+              <svg class="w-7 h-7 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v3M12 18v3M3 12h3M18 12h3m-2.636-6.364-2.122 2.122M7.758 16.242l-2.122 2.122m0-12.728 2.122 2.122m8.484 8.484 2.122 2.122"/></svg>
+            </div>
+            <h3 class="font-heading font-semibold text-base text-vink mb-2">Ingredientes Frescos</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Selecionados diariamente para garantir sabor e qualidade em cada bowl.</p>
+          </article>
+          <article class="text-center p-6 rounded-2xl bg-vcream card reveal d2" role="listitem">
+            <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+              <svg class="w-7 h-7 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon stroke-linejoin="round" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="font-heading font-semibold text-base text-vink mb-2">Peixe Premium</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Salmão e atum de alta qualidade, selecionados com rigor a cada dia.</p>
+          </article>
+          <article class="text-center p-6 rounded-2xl bg-vcream card reveal d3" role="listitem">
+            <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+              <svg class="w-7 h-7 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12m0 0c0-5 7-9 7-9s-1 7-7 9zm0 0c0-5-7-9-7-9s1 7 7 9z"/></svg>
+            </div>
+            <h3 class="font-heading font-semibold text-base text-vink mb-2">Opções Veganas</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Proteínas plant-based e toppings naturais para todos os estilos de vida.</p>
+          </article>
+          <article class="text-center p-6 rounded-2xl bg-vcream card reveal d4" role="listitem">
+            <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+              <svg class="w-7 h-7 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline stroke-linecap="round" stroke-linejoin="round" points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="font-heading font-semibold text-base text-vink mb-2">Entrega Rápida</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Delivery disponível pelo iFood e WhatsApp nas 4 unidades.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SOBRE ── -->
+    <section id="sobre" aria-labelledby="h2-sobre" class="py-24 bg-vcream">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="grid grid-cols-2 gap-3 reveal">
+            <img src="images/photo-5.jpg" alt="Interior moderno da Vibe Poke com mesas e decoração tropical" width="800" height="500" loading="lazy" class="col-span-2 h-56 w-full object-cover rounded-2xl">
+            <img src="images/photo-6.jpg" alt="Bowl de poke colorido com ingredientes frescos" width="400" height="300" loading="lazy" class="h-40 w-full object-cover rounded-2xl">
+            <img src="images/photo-7.jpg" alt="Equipe da Vibe Poke preparando os bowls com carinho" width="400" height="300" loading="lazy" class="h-40 w-full object-cover rounded-2xl">
+          </div>
+          <div class="reveal d2">
+            <p class="text-xs font-bold tracking-widest text-vcoral uppercase">Nossa História</p>
+            <h2 id="h2-sobre" class="font-heading font-bold text-4xl text-vink mt-3 mb-6 leading-snug">
+              Nascidos do sol<br>e do mar de Floripa
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-5">
+              A Vibe Poke nasceu da paixão pelo estilo de vida saudável de Florianópolis. Inspirados pela culinária havaiana e pela energia da ilha, criamos um espaço onde cada bowl conta uma história de frescor e sabor.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-10">
+              Com mais de 1.300 avaliações cinco estrelas e 4 unidades espalhadas pela cidade, somos referência em poke bowls em Floripa. Cada ingrediente é selecionado e renovado diariamente.
+            </p>
+            <dl class="grid grid-cols-3 gap-4">
+              <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
+                <dd class="font-heading font-bold text-3xl text-vgreen">4</dd>
+                <dt class="text-xs text-gray-500 mt-1 font-medium">Unidades</dt>
+              </div>
+              <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
+                <dd class="font-heading font-bold text-3xl text-vcoral">4.8 ★</dd>
+                <dt class="text-xs text-gray-500 mt-1 font-medium">Avaliação</dt>
+              </div>
+              <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
+                <dd class="font-heading font-bold text-3xl text-vgreen">+1.3k</dd>
+                <dt class="text-xs text-gray-500 mt-1 font-medium">Reviews</dt>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CARDÁPIO ── -->
+    <section id="cardapio" aria-labelledby="h2-cardapio" class="py-24 bg-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12 reveal">
+          <p class="text-xs font-bold tracking-widest text-vcoral uppercase">Nosso Cardápio</p>
+          <h2 id="h2-cardapio" class="font-heading font-bold text-4xl text-vink mt-3 mb-3">Tudo o que temos</h2>
+          <p class="text-gray-500 text-sm max-w-md mx-auto">Ingredientes frescos, combinações exclusivas. Personalize como preferir.</p>
         </div>
 
-        <h1 class="font-heading font-extrabold text-5xl sm:text-6xl md:text-7xl text-white leading-[1.06] mb-5">
-          O Poke Que<br>Vai Além do<br><span style="color:#E07A5F">Sabor</span>
-        </h1>
+        <!-- Category tabs -->
+        <div class="relative mb-2">
+          <div id="menu-tabs" role="tablist" aria-label="Categorias do cardápio"
+               class="flex gap-0 border-b border-gray-100 overflow-x-auto"
+               style="scrollbar-width:none;-webkit-overflow-scrolling:touch">
+          </div>
+        </div>
 
-        <p class="text-white/78 text-lg mb-9 leading-relaxed">
-          Ingredientes frescos, combinações exclusivas e uma<br class="hidden sm:block">
-          experiência que faz você querer voltar.
-        </p>
+        <!-- Items list -->
+        <div id="menu-items" role="tabpanel" aria-live="polite" aria-label="Itens do cardápio"></div>
 
-        <div class="flex flex-wrap gap-4">
-          <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank"
-             class="flex items-center gap-2 bg-vcoral hover:bg-[#c9664d] text-white px-7 py-3.5 rounded-full font-bold shadow-xl hover:scale-105 transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
-            Pedir Agora
+        <div class="mt-10 flex justify-center reveal">
+          <a href="https://wa.me/5548991743368?text=Oi!%20Gostaria%20de%20fazer%20um%20pedido" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 bg-vgreen text-white px-8 py-3.5 rounded-full font-bold hover:bg-[#3d6149] hover:scale-105 transition-all shadow-lg"
+             aria-label="Fazer pedido completo pelo WhatsApp">
+            Fazer Pedido
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#cardapio"
-             class="flex items-center gap-2 border-2 border-white/50 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-all">
-            Ver Cardapio
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AVALIAÇÕES ── -->
+    <section id="avaliacoes" aria-labelledby="h2-avaliacoes" class="py-24 bg-vink">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+          <p class="text-xs font-bold tracking-widest text-vcoral uppercase">O que falam de nós</p>
+          <h2 id="h2-avaliacoes" class="font-heading font-bold text-4xl text-white mt-3">+1.300 clientes felizes</h2>
+          <div class="flex justify-center items-center gap-2 mt-4">
+            <span class="text-[#F59E0B] text-xl tracking-wide" aria-label="5 estrelas">★★★★★</span>
+            <span class="text-white/40 text-sm" aria-label="Avaliação média: 4.8 de 5.0">4.8 / 5.0</span>
+          </div>
+        </div>
+        <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- ── DELIVERY BANNER ── -->
+    <section aria-labelledby="h2-delivery" class="py-16 bg-vcoral">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div class="text-white reveal">
+            <p class="text-xs font-bold tracking-widest text-white/70 uppercase">Delivery</p>
+            <h2 id="h2-delivery" class="font-heading font-bold text-4xl mt-2 mb-2">Peça pelo iFood</h2>
+            <p class="text-white/85 font-medium">Entregamos no conforto da sua casa. 4 unidades disponíveis.</p>
+          </div>
+          <div class="flex flex-wrap gap-3 reveal d2" role="list" aria-label="Links para pedido no iFood por unidade">
+            <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-campeche" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 bg-white text-[#b84f36] px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md"
+               role="listitem" aria-label="Pedir na unidade Campeche pelo iFood">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Campeche
+            </a>
+            <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-rita-maria" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 bg-white text-[#b84f36] px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md"
+               role="listitem" aria-label="Pedir na unidade Rita Maria pelo iFood">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Rita Maria
+            </a>
+            <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-jurere" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 bg-white text-[#b84f36] px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md"
+               role="listitem" aria-label="Pedir na unidade Jurerê pelo iFood">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Jurerê
+            </a>
+            <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-santa-monica" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 bg-white text-[#b84f36] px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md"
+               role="listitem" aria-label="Pedir na unidade Santa Mônica pelo iFood">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Santa Mônica
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LOCALIZAÇÕES ── -->
+    <section id="lojas" aria-labelledby="h2-lojas" class="py-24 bg-vcream">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+          <p class="text-xs font-bold tracking-widest text-vcoral uppercase">Onde estamos</p>
+          <h2 id="h2-lojas" class="font-heading font-bold text-4xl text-vink mt-3">Nossas Unidades</h2>
+          <p class="text-gray-500 mt-3 text-sm font-medium">
+            <time>Segunda a Domingo</time> · 11h às 23h
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="bg-white rounded-2xl p-6 shadow-sm card reveal d1">
+            <div class="w-10 h-10 bg-vgreen/10 rounded-xl flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-5 h-5 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-vink mb-1">Campeche</h3>
+            <address class="text-gray-500 text-sm mb-5 leading-relaxed not-italic">
+              Av. Campeche, 2480<br>Florianópolis – SC
+            </address>
+            <a href="https://maps.google.com/?q=Av.+Campeche+2480+Florianópolis+SC" target="_blank" rel="noopener noreferrer"
+               class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1"
+               aria-label="Ver localização da unidade Campeche no Google Maps">
+              Ver no mapa
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+          <article class="bg-white rounded-2xl p-6 shadow-sm card reveal d2">
+            <div class="w-10 h-10 bg-vcoral/10 rounded-xl flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-5 h-5 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-vink mb-1">Rita Maria</h3>
+            <address class="text-gray-500 text-sm mb-5 leading-relaxed not-italic">
+              Al. Annita Hoepcke da Silva, 112<br>Florianópolis – SC
+            </address>
+            <a href="https://maps.google.com/?q=Alameda+Annita+Hoepcke+da+Silva+112+Florianópolis+SC" target="_blank" rel="noopener noreferrer"
+               class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1"
+               aria-label="Ver localização da unidade Rita Maria no Google Maps">
+              Ver no mapa
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+          <article class="bg-white rounded-2xl p-6 shadow-sm card reveal d3">
+            <div class="w-10 h-10 bg-vgreen/10 rounded-xl flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-5 h-5 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-vink mb-1">Jurerê</h3>
+            <address class="text-gray-500 text-sm mb-5 leading-relaxed not-italic">
+              Rod. Jorn. Maurício S. Sobrinho, 5862<br>Florianópolis – SC
+            </address>
+            <a href="https://maps.google.com/?q=Rodovia+Jornalista+Maurício+Sirotsky+Sobrinho+5862+Florianópolis+SC" target="_blank" rel="noopener noreferrer"
+               class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1"
+               aria-label="Ver localização da unidade Jurerê no Google Maps">
+              Ver no mapa
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+          <article class="bg-white rounded-2xl p-6 shadow-sm card reveal d4">
+            <div class="w-10 h-10 bg-vcoral/10 rounded-xl flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-5 h-5 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-vink mb-1">Santa Mônica</h3>
+            <address class="text-gray-500 text-sm mb-5 leading-relaxed not-italic">
+              Av. Me. Benvenuta, 1168<br>Florianópolis – SC
+            </address>
+            <a href="https://maps.google.com/?q=Avenida+Me.+Benvenuta+1168+Florianópolis+SC" target="_blank" rel="noopener noreferrer"
+               class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1"
+               aria-label="Ver localização da unidade Santa Mônica no Google Maps">
+              Ver no mapa
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section id="faq" aria-labelledby="h2-faq" class="py-24 bg-white">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+          <p class="text-xs font-bold tracking-widest text-vcoral uppercase">Dúvidas</p>
+          <h2 id="h2-faq" class="font-heading font-bold text-4xl text-vink mt-3">Perguntas Frequentes</h2>
+        </div>
+        <div id="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- ── INSTAGRAM ── -->
+    <section aria-labelledby="h2-instagram" class="py-20 bg-vcream">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-10 reveal">
+          <p class="text-xs font-bold tracking-widest text-vcoral uppercase">Redes Sociais</p>
+          <h2 id="h2-instagram" class="font-heading font-bold text-4xl text-vink mt-3">@vibepoke</h2>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2" role="list" aria-label="Galeria de fotos do Instagram da Vibe Poke">
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-1.jpg"  alt="Poke bowl salmão e manga — Vibe Poke" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-2.jpg"  alt="Bowl colorido com ingredientes frescos" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-3.jpg"  alt="Ambiente da Vibe Poke" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-4.jpg"  alt="Poke spicy salmão" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-5.jpg"  alt="Gyoza artesanal da Vibe Poke" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-6.jpg"  alt="Frango teriyaki bowl" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-7.jpg"  alt="Chips de batata doce crocantes" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-8.jpg"  alt="Bowl Green Goddess vegano" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-9.jpg"  alt="Açaí bowl com granola e frutas" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-10.jpg" alt="Poke Campeche — o mais pedido" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-11.jpg" alt="Salada wakame fresca" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="aspect-square overflow-hidden rounded-xl" role="listitem" aria-label="Ver post no Instagram"><img src="images/photo-12.jpg" alt="Temaki salmão crocante com cream cheese" width="200" height="200" loading="lazy" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
+        </div>
+        <div class="text-center mt-8 reveal">
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 border-2 border-vink text-vink px-6 py-3 rounded-full font-bold text-sm hover:bg-vink hover:text-white transition-all"
+             aria-label="Seguir @vibepoke no Instagram">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Seguir @vibepoke
           </a>
         </div>
-
-        <!-- Location chips -->
-        <div class="flex flex-wrap gap-2 mt-8">
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Campeche
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Rita Maria
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Jurere
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white/90 text-xs px-3 py-1.5 rounded-full font-medium">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Santa Monica
-          </span>
-        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 bounce">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     DIFERENCIAIS
-══════════════════════════════════════════ -->
-<section class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Por que Vibe Poke?</span>
-      <h2 class="font-heading font-bold text-4xl text-vink mt-3">O que nos torna especiais</h2>
-    </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d1">
-        <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-7 h-7 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor" stroke="none"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
-        </div>
-        <h3 class="font-heading font-semibold text-base text-vink mb-2">Ingredientes Frescos</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Selecionados diariamente para garantir sabor e qualidade.</p>
-      </div>
-      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d2">
-        <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-7 h-7 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon stroke-linejoin="round" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <h3 class="font-heading font-semibold text-base text-vink mb-2">Peixe Premium</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Salmão e atum de alta qualidade em cada bowl.</p>
-      </div>
-      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d3">
-        <div class="w-14 h-14 bg-vgreen/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-7 h-7 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12m0 0c0-5 7-9 7-9s-1 7-7 9zm0 0c0-5-7-9-7-9s1 7 7 9z"/></svg>
-        </div>
-        <h3 class="font-heading font-semibold text-base text-vink mb-2">Opcoes Veganas</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Proteinas plant-based para todos os gostos.</p>
-      </div>
-      <div class="text-center p-6 rounded-2xl bg-vcream card reveal d4">
-        <div class="w-14 h-14 bg-vcoral/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-7 h-7 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline stroke-linecap="round" stroke-linejoin="round" points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3 class="font-heading font-semibold text-base text-vink mb-2">Entrega Rapida</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Delivery disponivel pelo iFood e WhatsApp.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     SOBRE
-══════════════════════════════════════════ -->
-<section id="sobre" class="py-24 bg-vcream">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div class="grid grid-cols-2 gap-3 reveal">
-        <img src="images/photo-5.jpg" alt="Vibe Poke" class="col-span-2 h-56 w-full object-cover rounded-2xl">
-        <img src="images/photo-6.jpg" alt="Vibe Poke" class="h-40 w-full object-cover rounded-2xl">
-        <img src="images/photo-7.jpg" alt="Vibe Poke" class="h-40 w-full object-cover rounded-2xl">
-      </div>
-      <div class="reveal d2">
-        <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Nossa Historia</span>
-        <h2 class="font-heading font-bold text-4xl text-vink mt-3 mb-6 leading-snug">
-          Nascidos do sol<br>e do mar de Floripa
-        </h2>
-        <p class="text-gray-600 leading-relaxed mb-5">
-          A Vibe Poke nasceu da paixao pelo estilo de vida saudavel de Florianopolis. Inspirados pela culinaria havaiana e pela energia da ilha, criamos um espaco onde cada bowl conta uma historia de frescor e sabor.
+    <!-- ── CTA FINAL ── -->
+    <section id="contato" aria-labelledby="h2-contato" class="py-28 bg-vgreen">
+      <div class="max-w-4xl mx-auto px-6 text-center reveal">
+        <p class="text-xs font-bold tracking-widest text-white/50 uppercase">Fale Conosco</p>
+        <h2 id="h2-contato" class="font-heading font-extrabold text-5xl md:text-6xl text-white mt-3 mb-6">Pronto para pedir?</h2>
+        <p class="text-white/75 text-xl mb-10 max-w-lg mx-auto leading-relaxed">
+          Peça agora pelo WhatsApp ou venha nos visitar.<br>
+          Todo dia, das 11h às 23h.
         </p>
-        <p class="text-gray-600 leading-relaxed mb-10">
-          Com mais de 1.300 avaliacoes cinco estrelas e 4 unidades espalhadas pela cidade, somos referencia em poke bowls em Floripa. Cada ingrediente e cuidadosamente selecionado todo dia.
-        </p>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
-            <div class="font-heading font-bold text-3xl text-vgreen">4</div>
-            <div class="text-xs text-gray-500 mt-1 font-medium">Unidades</div>
-          </div>
-          <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
-            <div class="font-heading font-bold text-3xl text-vcoral">4.8 ★</div>
-            <div class="text-xs text-gray-500 mt-1 font-medium">Avaliacao</div>
-          </div>
-          <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
-            <div class="font-heading font-bold text-3xl text-vgreen">+1.3k</div>
-            <div class="text-xs text-gray-500 mt-1 font-medium">Reviews</div>
-          </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank" rel="noopener noreferrer"
+             class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-[#1DAD55] hover:scale-105 transition-all shadow-xl"
+             aria-label="Entrar em contato e fazer pedido pelo WhatsApp">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            Pedir no WhatsApp
+          </a>
+          <a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer"
+             class="flex items-center justify-center gap-3 bg-white/18 backdrop-blur text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/28 transition-all border border-white/25"
+             aria-label="Acessar o Instagram @vibepoke">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @vibepoke
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+  </main><!-- /main -->
 
-<!-- ══════════════════════════════════════════
-     CARDAPIO
-══════════════════════════════════════════ -->
-<section id="cardapio" class="py-24 bg-white">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Nosso Cardapio</span>
-      <h2 class="font-heading font-bold text-4xl text-vink mt-3 mb-3">Tudo o que temos</h2>
-      <p class="text-gray-500 text-sm max-w-md mx-auto">Ingredientes frescos, combinacoes exclusivas. Personalize como preferir.</p>
-    </div>
-
-    <!-- Category tabs -->
-    <div class="flex gap-0 border-b border-gray-100 mb-8 overflow-x-auto" id="menu-tabs" style="scrollbar-width:none">
-      <!-- rendered by JS -->
-    </div>
-
-    <!-- Items list -->
-    <div id="menu-items" class="space-y-0">
-      <!-- rendered by JS -->
-    </div>
-
-    <div class="mt-10 flex justify-center reveal">
-      <a href="https://wa.me/5548991743368?text=Oi!%20Gostaria%20de%20fazer%20um%20pedido" target="_blank"
-         class="inline-flex items-center gap-2 bg-vgreen text-white px-8 py-3.5 rounded-full font-bold hover:bg-[#3d6149] hover:scale-105 transition-all shadow-lg">
-        Fazer Pedido
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     AVALIACOES
-══════════════════════════════════════════ -->
-<section id="avaliacoes" class="py-24 bg-vink">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">O que falam de nos</span>
-      <h2 class="font-heading font-bold text-4xl text-white mt-3">+1.300 clientes felizes</h2>
-      <div class="flex justify-center items-center gap-2 mt-4">
-        <span class="text-[#F59E0B] text-xl tracking-wide">★★★★★</span>
-        <span class="text-white/40 text-sm">4.8 / 5.0</span>
-      </div>
-    </div>
-    <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     DELIVERY BANNER
-══════════════════════════════════════════ -->
-<section class="py-16 bg-vcoral">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="text-white reveal">
-        <span class="text-xs font-bold tracking-widest text-white/60 uppercase">Delivery</span>
-        <h2 class="font-heading font-bold text-4xl mt-2 mb-2">Peca pelo iFood</h2>
-        <p class="text-white/80">Entregamos no conforto da sua casa. 4 unidades disponiveis.</p>
-      </div>
-      <div class="flex flex-wrap gap-3 reveal d2">
-        <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-campeche" target="_blank"
-           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          Campeche
-        </a>
-        <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-rita-maria" target="_blank"
-           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          Rita Maria
-        </a>
-        <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-jurere" target="_blank"
-           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          Jurere
-        </a>
-        <a href="https://www.ifood.com.br/delivery/florianopolis-sc/vibe-poke-santa-monica" target="_blank"
-           class="inline-flex items-center gap-2 bg-white text-vcoral px-5 py-3 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-md">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          Santa Monica
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     LOCALIZACOES
-══════════════════════════════════════════ -->
-<section id="lojas" class="py-24 bg-vcream">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Onde estamos</span>
-      <h2 class="font-heading font-bold text-4xl text-vink mt-3">Nossas Unidades</h2>
-      <p class="text-gray-500 mt-3 text-sm font-medium">Segunda a Domingo · 11h as 23h</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d1">
-        <div class="w-10 h-10 bg-vgreen/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer role="contentinfo" class="bg-vink text-white py-14">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div class="md:col-span-2">
+          <img src="images/logo.png" alt="Vibe Poke" width="120" height="36" loading="lazy"
+               class="h-8 w-auto brightness-0 invert mb-4"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="display:none" class="font-heading font-bold text-xl text-white tracking-tight mb-4 block">vibe poke</span>
+          <p class="text-white/40 text-sm leading-relaxed max-w-xs">Os melhores poke bowls de Florianópolis. Ingredientes frescos, sabores incríveis.</p>
+          <p class="text-white/30 text-xs mt-4">
+            <a href="tel:+5548991743368" class="hover:text-white/60 transition-colors">(48) 99174-3368</a>
+          </p>
         </div>
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">Campeche</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Av. Campeche, 2480<br>Florianopolis – SC</p>
-        <a href="https://maps.google.com/?q=Av.+Campeche+2480+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
-          Ver no mapa
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <nav aria-label="Links do rodapé">
+          <h3 class="text-xs font-bold tracking-widest text-white/35 uppercase mb-4">Navegação</h3>
+          <ul class="space-y-2.5 list-none" role="list">
+            <li><a href="#sobre"      class="block text-sm text-white/50 hover:text-white transition-colors">Sobre</a></li>
+            <li><a href="#cardapio"   class="block text-sm text-white/50 hover:text-white transition-colors">Cardápio</a></li>
+            <li><a href="#avaliacoes" class="block text-sm text-white/50 hover:text-white transition-colors">Avaliações</a></li>
+            <li><a href="#lojas"      class="block text-sm text-white/50 hover:text-white transition-colors">Nossas Lojas</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Contato e informações legais">
+          <h3 class="text-xs font-bold tracking-widest text-white/35 uppercase mb-4">Legal &amp; Contato</h3>
+          <ul class="space-y-2.5 list-none" role="list">
+            <li><a href="https://wa.me/5548991743368" target="_blank" rel="noopener noreferrer" class="block text-sm text-white/50 hover:text-white transition-colors">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/vibepoke/" target="_blank" rel="noopener noreferrer" class="block text-sm text-white/50 hover:text-white transition-colors">Instagram @vibepoke</a></li>
+            <li><a href="politica-de-privacidade.html" class="block text-sm text-white/50 hover:text-white transition-colors">Política de Privacidade</a></li>
+            <li><a href="politica-de-cookies.html"     class="block text-sm text-white/50 hover:text-white transition-colors">Política de Cookies</a></li>
+            <li><a href="termos-de-uso.html"           class="block text-sm text-white/50 hover:text-white transition-colors">Termos de Uso</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d2">
-        <div class="w-10 h-10 bg-vcoral/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">Rita Maria</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Al. Annita Hoepcke da Silva, 112<br>Florianopolis – SC</p>
-        <a href="https://maps.google.com/?q=Alameda+Annita+Hoepcke+da+Silva+112+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
-          Ver no mapa
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d3">
-        <div class="w-10 h-10 bg-vgreen/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-vgreen" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">Jurere</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Rod. Jorn. Mauricio S. Sobrinho, 5862<br>Florianopolis – SC</p>
-        <a href="https://maps.google.com/?q=Rodovia+Jornalista+Maurício+Sirotsky+Sobrinho+5862+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
-          Ver no mapa
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-sm card reveal d4">
-        <div class="w-10 h-10 bg-vcoral/10 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-vcoral" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3 class="font-heading font-bold text-lg text-vink mb-1">Santa Monica</h3>
-        <p class="text-gray-500 text-sm mb-5 leading-relaxed">Av. Me. Benvenuta, 1168<br>Florianopolis – SC</p>
-        <a href="https://maps.google.com/?q=Avenida+Me.+Benvenuta+1168+Florianópolis+SC" target="_blank"
-           class="text-vgreen text-sm font-bold hover:underline inline-flex items-center gap-1">
-          Ver no mapa
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <div class="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/20 text-xs">
+        <p>&copy; <span id="footer-year">2024</span> Vibe Poke. Todos os direitos reservados. Florianópolis – SC.</p>
+        <p>CNPJ: 29.003.687/0001-09</p>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
+  <!-- Floating WhatsApp (fixo) -->
+  <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform"
+     aria-label="Abrir WhatsApp para fazer pedido">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
 
-<!-- ══════════════════════════════════════════
-     FAQ
-══════════════════════════════════════════ -->
-<section id="faq" class="py-24 bg-white">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Duvidas</span>
-      <h2 class="font-heading font-bold text-4xl text-vink mt-3">Perguntas Frequentes</h2>
-    </div>
-    <div id="faq-list" class="space-y-3"></div>
-  </div>
-</section>
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════ -->
+  <script>
+  'use strict';
 
+  // ── Ano atual no footer ───────────────────────────────────────────
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-<!-- ══════════════════════════════════════════
-     INSTAGRAM GRID
-══════════════════════════════════════════ -->
-<section class="py-20 bg-vcream">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-10 reveal">
-      <span class="text-xs font-bold tracking-widest text-vcoral uppercase">Redes Sociais</span>
-      <h2 class="font-heading font-bold text-4xl text-vink mt-3">@vibepoke</h2>
-    </div>
-    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-1.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-2.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-3.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-4.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-5.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-6.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-7.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-8.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-9.jpg"  alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-10.jpg" alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-11.jpg" alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank" class="aspect-square overflow-hidden rounded-xl"><img src="images/photo-12.jpg" alt="Vibe Poke" class="w-full h-full object-cover hover:scale-110 hover:opacity-80 transition-all duration-500"></a>
-    </div>
-    <div class="text-center mt-8 reveal">
-      <a href="https://www.instagram.com/vibepoke/" target="_blank"
-         class="inline-flex items-center gap-2 border-2 border-vink text-vink px-6 py-3 rounded-full font-bold text-sm hover:bg-vink hover:text-white transition-all">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        Seguir @vibepoke
-      </a>
-    </div>
-  </div>
-</section>
+  // ══════════════════════════════════════════════════════════════════
+  //  LGPD — Cookie Consent
+  // ══════════════════════════════════════════════════════════════════
+  var CONSENT_KEY = 'vp_consent';
+  var analyticsOn = false;
+  var marketingOn = false;
 
+  function getConsent() {
+    try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch(e) { return null; }
+  }
 
-<!-- ══════════════════════════════════════════
-     CTA FINAL
-══════════════════════════════════════════ -->
-<section id="contato" class="py-28 bg-vgreen">
-  <div class="max-w-4xl mx-auto px-6 text-center reveal">
-    <span class="text-xs font-bold tracking-widest text-white/45 uppercase">Fale Conosco</span>
-    <h2 class="font-heading font-extrabold text-5xl md:text-6xl text-white mt-3 mb-6">Pronto para pedir?</h2>
-    <p class="text-white/72 text-xl mb-10 max-w-lg mx-auto leading-relaxed">
-      Peca agora pelo WhatsApp ou venha nos visitar.<br>Todo dia, das 11h as 23h.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank"
-         class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-[#1DAD55] hover:scale-105 transition-all shadow-xl">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Pedir no WhatsApp
-      </a>
-      <a href="https://www.instagram.com/vibepoke/" target="_blank"
-         class="flex items-center justify-center gap-3 bg-white/18 backdrop-blur text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/28 transition-all border border-white/25">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        @vibepoke
-      </a>
-    </div>
-  </div>
-</section>
+  function saveConsent(analytics, marketing) {
+    analyticsOn = !!analytics;
+    marketingOn = !!marketing;
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify({
+        essential: true,
+        analytics: analyticsOn,
+        marketing: marketingOn,
+        timestamp: new Date().toISOString(),
+        version:   '1.0'
+      }));
+    } catch(e) {}
+    // Atualiza Google Consent Mode v2
+    gtag('consent', 'update', {
+      analytics_storage:  analyticsOn ? 'granted' : 'denied',
+      ad_storage:         marketingOn ? 'granted' : 'denied',
+      ad_user_data:       marketingOn ? 'granted' : 'denied',
+      ad_personalization: marketingOn ? 'granted' : 'denied'
+    });
+    hideBanner();
+  }
 
+  function showBanner() {
+    var b = document.getElementById('cookie-banner');
+    requestAnimationFrame(function() { b.classList.add('show'); });
+  }
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
-<footer class="bg-vink text-white py-14">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-      <div class="md:col-span-2">
-        <img src="images/logo.png" alt="Vibe Poke" class="h-8 w-auto brightness-0 invert mb-4">
-        <p class="text-white/40 text-sm leading-relaxed max-w-xs">Os melhores poke bowls de Florianopolis. Ingredientes frescos, sabores incríveis.</p>
-        <p class="text-white/30 text-xs mt-4">(48) 99174-3368</p>
-      </div>
-      <div>
-        <h4 class="text-xs font-bold tracking-widest text-white/35 uppercase mb-4">Links</h4>
-        <div class="space-y-2.5">
-          <a href="#sobre"      class="block text-sm text-white/50 hover:text-white transition-colors">Sobre</a>
-          <a href="#cardapio"   class="block text-sm text-white/50 hover:text-white transition-colors">Cardapio</a>
-          <a href="#avaliacoes" class="block text-sm text-white/50 hover:text-white transition-colors">Avaliacoes</a>
-          <a href="#lojas"      class="block text-sm text-white/50 hover:text-white transition-colors">Nossas Lojas</a>
-        </div>
-      </div>
-      <div>
-        <h4 class="text-xs font-bold tracking-widest text-white/35 uppercase mb-4">Contato</h4>
-        <div class="space-y-2.5">
-          <a href="https://wa.me/5548991743368"         target="_blank" class="block text-sm text-white/50 hover:text-white transition-colors">WhatsApp</a>
-          <a href="https://www.instagram.com/vibepoke/" target="_blank" class="block text-sm text-white/50 hover:text-white transition-colors">Instagram @vibepoke</a>
-          <p class="text-sm text-white/30">Seg–Dom: 11h–23h</p>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-white/8 pt-6 text-center text-white/20 text-xs">
-      &copy; 2024 Vibe Poke. Todos os direitos reservados. Florianopolis – SC.
-    </div>
-  </div>
-</footer>
+  function hideBanner() {
+    document.getElementById('cookie-banner').classList.remove('show');
+  }
 
+  function showModal() {
+    var m = document.getElementById('cookie-modal');
+    m.classList.add('show');
+    // Foco no primeiro botão focável (acessibilidade)
+    setTimeout(function() {
+      var btn = m.querySelector('button');
+      if (btn) btn.focus();
+    }, 50);
+  }
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/5548991743368?text=Oi!%20Quero%20fazer%20um%20pedido" target="_blank"
-   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
-  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a4.3 4.3 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-</a>
+  function hideModal() {
+    document.getElementById('cookie-modal').classList.remove('show');
+  }
 
+  function toggleSwitch(id) {
+    var track = document.getElementById('sw-' + id);
+    var on = track.classList.contains('on');
+    track.classList.toggle('on', !on);
+    track.setAttribute('aria-checked', !on);
+  }
 
-<!-- ══════════════════════════════════════════
-     SCRIPTS
-══════════════════════════════════════════ -->
-<script>
-// ── MENU DATA ────────────────────────────────────────────────────────────────
-const categories = [
-  { id: 'entradas',   label: 'Entradas'   },
-  { id: 'pokes',      label: 'Pokes'      },
-  { id: 'hot',        label: 'Hot'        },
-  { id: 'temakis',    label: 'Temakis'    },
-  { id: 'bebidas',    label: 'Bebidas'    },
-  { id: 'sobremesas', label: 'Sobremesas' },
-  { id: 'extras',     label: 'Extras'     },
-];
+  // Inicia banner se não há consentimento
+  window.addEventListener('DOMContentLoaded', function() {
+    var saved = getConsent();
+    if (!saved) {
+      setTimeout(showBanner, 800);
+    }
 
-const items = [
-  // ENTRADAS
-  { cat:'entradas',   name:'Edamame',             price:'R$ 22,90', desc:'Edamame cozido no vapor com flor de sal e azeite de gergelim. Leve, nutritivo e irresistível.',                       tags:['vegetariano','sem-gluten'] },
-  { cat:'entradas',   name:'Gyoza (6 unid.)',      price:'R$ 34,90', desc:'Dumplings artesanais grelhados com recheio de frango e legumes. Servidos com molho ponzu.',                           tags:['mais-pedido'] },
-  { cat:'entradas',   name:'Salada Wakame',        price:'R$ 24,90', desc:'Alga wakame temperada com molho de gergelim japones, cebolinha e semente de gergelim.',                               tags:['vegetariano','sem-gluten'] },
-  { cat:'entradas',   name:'Chips de Batata Doce', price:'R$ 19,90', desc:'Fatias finas de batata doce assadas ate ficarem crocantes. Saudavel e viciante.',                                     tags:['vegetariano','sem-gluten','novo'] },
-  // POKES
-  { cat:'pokes',      name:'Campeche',             price:'R$ 59,90', desc:'Nosso bowl signature. Salmao fresco, atum, manga, abacate cremoso, edamame e cobertura especial Vibe.',               tags:['mais-pedido','premium','sem-gluten'] },
-  { cat:'pokes',      name:'Aloha',                price:'R$ 54,90', desc:'Bowl tropical com salmao marinado, manga fresca, abacate, pepino crocante e molho ponzu citrico.',                    tags:['mais-pedido','sem-gluten'] },
-  { cat:'pokes',      name:'Havaiano',             price:'R$ 54,90', desc:'Atum fresco com wakame, edamame, abacate, cenoura e molho teriyaki artesanal.',                                      tags:['sem-gluten'] },
-  { cat:'pokes',      name:'Spicy Salmon',         price:'R$ 57,90', desc:'Para os amantes do picante. Salmao com sriracha mayo, pepino, tobiko, gergelim e chips de batata doce.',             tags:['apimentado','mais-pedido'] },
-  { cat:'pokes',      name:'Green Goddess',        price:'R$ 49,90', desc:'Bowl vegetariano. Tofu grelhado, abacate, edamame, manga, pepino e molho tahine verde.',                             tags:['vegetariano','sem-gluten','novo'] },
-  { cat:'pokes',      name:'Frango Grelhado',      price:'R$ 49,90', desc:'Peito de frango grelhado com tempero asiatico, tomate cereja, abacate, milho e molho mostarda mel.',                  tags:['sem-gluten'] },
-  // HOT
-  { cat:'hot',        name:'Yakisoba de Camarao',  price:'R$ 62,90', desc:'Macarrao yakisoba wok-fried com camarao suculento, brocolis, pimentao e molho agridoce especial.',                   tags:['mais-pedido','apimentado'] },
-  { cat:'hot',        name:'Frango Teriyaki Bowl', price:'R$ 52,90', desc:'Frango caramelizado no molho teriyaki artesanal, servido sobre arroz japones com legumes salteados.',                tags:[] },
-  // TEMAKIS
-  { cat:'temakis',    name:'Temaki Salmao',        price:'R$ 32,90', desc:'Cone de alga nori crocante com arroz temperado, salmao fresco, cream cheese e cebolinha.',                            tags:['mais-pedido'] },
-  { cat:'temakis',    name:'Temaki Atum',          price:'R$ 32,90', desc:'Cone de alga nori com atum fresco, abacate cremoso, pepino e molho especial.',                                       tags:[] },
-  { cat:'temakis',    name:'Temaki Skin',          price:'R$ 28,90', desc:'Pele de salmao crocante com cream cheese, pepino, cebolinha e molho ponzu. Um classico.',                            tags:['mais-pedido'] },
-  { cat:'temakis',    name:'Temaki Veggie',        price:'R$ 27,90', desc:'Opcao vegetariana com abacate, manga, pepino, cream cheese e molho tahine.',                                         tags:['vegetariano'] },
-  // BEBIDAS
-  { cat:'bebidas',    name:'Agua de Coco',         price:'R$ 12,90', desc:'Agua de coco natural gelada. Hidratacao pura e tropical.',                                                            tags:['sem-gluten'] },
-  { cat:'bebidas',    name:'Suco Natural',         price:'R$ 16,90', desc:'Sucos naturais da estacao: maracuja, abacaxi, limao, laranja ou melancia.',                                          tags:['sem-gluten'] },
-  { cat:'bebidas',    name:'Kombucha',             price:'R$ 18,90', desc:'Kombucha artesanal com probioticos naturais. Sabores: gengibre-limao, hibisco ou maracuja.',                         tags:['novo'] },
-  { cat:'bebidas',    name:'Refrigerante Lata',    price:'R$  9,90', desc:'Coca-Cola, Coca Zero, Guarana, Sprite ou Tonica.',                                                                   tags:[] },
-  // SOBREMESAS
-  { cat:'sobremesas', name:'Acai Bowl',            price:'R$ 34,90', desc:'Acai cremoso da Amazonia com granola artesanal, frutas da estacao, mel e coco ralado.',                              tags:['vegetariano','mais-pedido'] },
-  { cat:'sobremesas', name:'Mochi Ice Cream',      price:'R$ 22,90', desc:'Bolinho de arroz glutinoso recheado com sorvete premium. Sabores: matcha, morango ou baunilha.',                    tags:['vegetariano','novo'] },
-  // EXTRAS
-  { cat:'extras',     name:'Proteina Extra',       price:'R$ 18,90', desc:'Adicione mais proteina ao seu bowl: salmao, atum, frango ou tofu.',                                                  tags:['sem-gluten'] },
-  { cat:'extras',     name:'Porcao de Arroz',      price:'R$  9,90', desc:'Arroz shari temperado no estilo japones.',                                                                           tags:['vegetariano','sem-gluten'] },
-  { cat:'extras',     name:'Abacate Extra',        price:'R$ 10,90', desc:'Abacate fresco em fatias adicionado ao seu pedido.',                                                                 tags:['vegetariano','sem-gluten'] },
-];
+    // Botões do banner
+    document.getElementById('btn-accept-all').addEventListener('click', function() { saveConsent(true, true); });
+    document.getElementById('btn-essential').addEventListener('click',  function() { saveConsent(false, false); });
+    document.getElementById('btn-settings').addEventListener('click',   showModal);
 
-const tagMeta = {
-  'mais-pedido':  { label:'Mais Pedido', cls:'b-coral' },
-  'premium':      { label:'Premium',     cls:'b-coral' },
-  'apimentado':   { label:'Picante',     cls:'b-coral' },
-  'novo':         { label:'Novo',        cls:'b-green' },
-  'vegetariano':  { label:'Veg',         cls:'b-green' },
-  'sem-gluten':   { label:'Sem Gluten',  cls:'b-gray'  },
-};
+    // Botões do modal
+    document.getElementById('btn-modal-cancel').addEventListener('click', hideModal);
+    document.getElementById('btn-modal-save').addEventListener('click', function() {
+      var a = document.getElementById('sw-analytics').classList.contains('on');
+      var m = document.getElementById('sw-marketing').classList.contains('on');
+      saveConsent(a, m);
+      hideModal();
+    });
 
-let activeTab = 'pokes';
-
-// ── RENDER TABS ──────────────────────────────────────────────────────────────
-function renderTabs() {
-  const tabsEl = document.getElementById('menu-tabs');
-  tabsEl.innerHTML = categories.map(c => `
-    <button onclick="setTab('${c.id}')" id="tab-${c.id}"
-      class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold text-gray-500 hover:text-vgreen whitespace-nowrap ${c.id === activeTab ? 'active' : ''}">
-      ${c.label}
-    </button>`).join('');
-}
-
-// ── RENDER ITEMS ─────────────────────────────────────────────────────────────
-function renderItems() {
-  const list = items.filter(i => i.cat === activeTab);
-  const el = document.getElementById('menu-items');
-  el.innerHTML = list.map(item => {
-    const badges = item.tags.map(t => {
-      const m = tagMeta[t];
-      return m ? `<span class="badge ${m.cls}">${m.label}</span>` : '';
-    }).join('');
-    return `
-      <div class="menu-item py-5 flex items-start justify-between gap-4">
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center flex-wrap gap-2 mb-1">
-            <h3 class="font-heading font-semibold text-vink text-base">${item.name}</h3>
-            ${badges}
-          </div>
-          <p class="text-gray-500 text-sm leading-relaxed">${item.desc}</p>
-        </div>
-        <div class="flex-shrink-0 text-right">
-          <span class="font-heading font-bold text-lg text-vgreen whitespace-nowrap">${item.price}</span>
-        </div>
-      </div>`;
-  }).join('');
-}
-
-function setTab(id) {
-  activeTab = id;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  renderItems();
-}
-
-renderTabs();
-renderItems();
-
-// ── REVIEWS ──────────────────────────────────────────────────────────────────
-const reviews = [
-  { n:'Ana Carolina',    loc:'Campeche',     av:'A', t:'O melhor poke de Floripa sem duvidas! Sempre fresco, ingredientes de qualidade e atendimento impecavel. Virei cliente fiel!' },
-  { n:'Pedro Henrique',  loc:'Rita Maria',   av:'P', t:'Poke Campeche e viciante! Montagem caprichada, ingredientes fresquissimos. Entrega super rapida pelo iFood tambem.' },
-  { n:'Mariana Costa',   loc:'Jurere',       av:'M', t:'Ambiente incrivel, staff super simpatico. O bowl vegano e perfeito. Recomendo para todo mundo!' },
-  { n:'Lucas Ferreira',  loc:'Santa Monica', av:'L', t:'Ja testei varias pokerias em Floripa e Vibe Poke e disparada a melhor. Porcoes generosas e preco justo!' },
-  { n:'Isabela Santos',  loc:'Campeche',     av:'I', t:'Fui pela primeira vez semana passada e ja sou fa! O spicy salmon e simplesmente divino. Voltarei muitas vezes!' },
-  { n:'Rafael Oliveira', loc:'Jurere',       av:'R', t:'Atendimento incrivel, poke fresquissimo. O ambiente da unidade do Jurere e lindo. Obrigado Vibe Poke!' },
-];
-const rg = document.getElementById('reviews-grid');
-reviews.forEach((r, i) => {
-  const d = ['d1','d2','d3','','d1','d2'][i] || '';
-  rg.insertAdjacentHTML('beforeend', `
-    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 card reveal ${d}">
-      <div class="flex items-start gap-4 mb-4">
-        <div class="w-10 h-10 rounded-full bg-vgreen flex items-center justify-center font-bold text-white flex-shrink-0 font-heading">${r.av}</div>
-        <div class="flex-1 min-w-0">
-          <div class="font-semibold text-white truncate">${r.n}</div>
-          <div class="text-white/40 text-xs">${r.loc}</div>
-        </div>
-        <span class="text-[#F59E0B] text-sm flex-shrink-0 tracking-wide">★★★★★</span>
-      </div>
-      <p class="text-white/60 text-sm leading-relaxed">"${r.t}"</p>
-    </div>`);
-});
-
-// ── FAQ ──────────────────────────────────────────────────────────────────────
-const faqs = [
-  { q:'Quais sao os horarios de funcionamento?',  a:'Abrimos todos os dias da semana, de segunda a domingo, das 11h as 23h — incluindo feriados!' },
-  { q:'Voces fazem delivery?',                    a:'Sim! Trabalhamos com delivery pelo iFood e tambem direto pelo WhatsApp (48) 99174-3368.' },
-  { q:'Posso personalizar meu poke?',             a:'Com certeza! Voce escolhe a base (arroz, quinoa ou mix verde), proteina, toppings e molho. Montamos do jeito que voce quiser.' },
-  { q:'Tem opcoes vegetarianas e veganas?',       a:'Sim! Temos varias opcoes veganas, incluindo tofu grelhado e proteinas plant-based. Todos os toppings podem ser adaptados.' },
-  { q:'Os ingredientes sao frescos todo dia?',    a:'Absolutamente! Todos os ingredientes sao selecionados e renovados diariamente. Frescor e nossa principal prioridade.' },
-  { q:'Qual o tamanho dos bowls?',               a:'Nossos bowls vem em tamanho unico generoso — perfeito para uma refeicao completa. Tambem temos opcao Kids!' },
-  { q:'Voces tem opcoes sem gluten?',             a:'Sim! Varios itens do nosso cardapio sao naturalmente sem gluten. Informe sua restricao ao fazer o pedido.' },
-  { q:'Como faco para fazer um pedido?',          a:'Pelo iFood, pelo WhatsApp (48) 99174-3368 ou pessoalmente em uma de nossas 4 unidades. Escolha o jeito que preferir!' },
-];
-const fl = document.getElementById('faq-list');
-faqs.forEach((f, i) => {
-  fl.insertAdjacentHTML('beforeend', `
-    <div class="faq-item bg-vcream rounded-2xl overflow-hidden reveal" style="transition-delay:${i*.05}s">
-      <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between p-6 gap-4">
-        <span class="font-heading font-semibold text-vink text-sm sm:text-base">${f.q}</span>
-        <span class="faq-icon text-vgreen text-2xl font-light flex-shrink-0 leading-none">+</span>
-      </button>
-      <div class="faq-body"><p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">${f.a}</p></div>
-    </div>`);
-});
-
-function toggleFaq(btn) {
-  const item  = btn.closest('.faq-item');
-  const body  = item.querySelector('.faq-body');
-  const icon  = item.querySelector('.faq-icon');
-  const open  = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => {
-    el.classList.remove('open');
-    el.querySelector('.faq-body').classList.remove('open');
-    el.querySelector('.faq-icon').textContent = '+';
+    // Fecha modal com Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') hideModal();
+    });
   });
-  if (!open) { item.classList.add('open'); body.classList.add('open'); icon.textContent = '×'; }
-}
 
-// ── NAVBAR SCROLL ─────────────────────────────────────────────────────────────
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('solid', window.scrollY > 40);
-}, { passive: true });
+  // ══════════════════════════════════════════════════════════════════
+  //  DADOS DO CARDÁPIO
+  // ══════════════════════════════════════════════════════════════════
+  var categories = [
+    { id:'entradas',   label:'Entradas'   },
+    { id:'pokes',      label:'Pokés'      },
+    { id:'hot',        label:'Hot'        },
+    { id:'temakis',    label:'Temakis'    },
+    { id:'bebidas',    label:'Bebidas'    },
+    { id:'sobremesas', label:'Sobremesas' },
+    { id:'extras',     label:'Extras'     },
+  ];
 
-// ── HERO SLIDESHOW ────────────────────────────────────────────────────────────
-let cur = 0;
-const slides = document.querySelectorAll('.slide');
-setInterval(() => {
-  slides[cur].classList.remove('active');
-  cur = (cur + 1) % slides.length;
-  slides[cur].classList.add('active');
-}, 5000);
+  var items = [
+    {cat:'entradas',   name:'Edamame',             price:'R$†22,90', desc:'Edamame cozido no vapor com flor de sal e azeite de gergelim. Leve, nutritivo e irresistível.',         tags:['vegetariano','sem-gluten']},
+    {cat:'entradas',   name:'Gyoza (6 unid.)',      price:'R$†34,90', desc:'Dumplings artesanais grelhados com frango e legumes. Servidos com molho ponzu.',                        tags:['mais-pedido']},
+    {cat:'entradas',   name:'Salada Wakame',        price:'R$†24,90', desc:'Alga wakame temperada com molho de gergelim japonês, cebolinha e gergelim tostado.',                    tags:['vegetariano','sem-gluten']},
+    {cat:'entradas',   name:'Chips de Batata Doce', price:'R$†19,90', desc:'Fatias finas de batata doce assadas até ficarem crocantes. Saudável e delicioso.',                      tags:['vegetariano','sem-gluten','novo']},
+    {cat:'pokes',      name:'Campeche',             price:'R$†59,90', desc:'Nosso bowl signature. Salmão fresco, atum, manga, abacate cremoso, edamame e cobertura especial Vibe.', tags:['mais-pedido','premium','sem-gluten']},
+    {cat:'pokes',      name:'Aloha',                price:'R$†54,90', desc:'Bowl tropical com salmão marinado, manga fresca, abacate, pepino crocante e molho ponzu cítrico.',      tags:['mais-pedido','sem-gluten']},
+    {cat:'pokes',      name:'Havaiano',             price:'R$†54,90', desc:'Atum fresco com wakame, edamame, abacate, cenoura e molho teriyaki artesanal.',                        tags:['sem-gluten']},
+    {cat:'pokes',      name:'Spicy Salmon',         price:'R$†57,90', desc:'Salmão com sriracha mayo, pepino, tobiko, gergelim e chips de batata doce. Para quem ama picante.',    tags:['apimentado','mais-pedido']},
+    {cat:'pokes',      name:'Green Goddess',        price:'R$†49,90', desc:'Bowl vegetariano: tofu grelhado, abacate, edamame, manga, pepino e molho tahine verde.',               tags:['vegetariano','sem-gluten','novo']},
+    {cat:'pokes',      name:'Frango Grelhado',      price:'R$†49,90', desc:'Frango com tempero asiático, tomate cereja, abacate, milho e molho de mostarda mel.',                  tags:['sem-gluten']},
+    {cat:'hot',        name:'Yakisoba de Camarão',  price:'R$†62,90', desc:'Macarrão yakisoba wok-fried com camarão, brócolis, pimentão e molho agridoce especial.',               tags:['mais-pedido','apimentado']},
+    {cat:'hot',        name:'Frango Teriyaki Bowl', price:'R$†52,90', desc:'Frango caramelizado no molho teriyaki artesanal sobre arroz japonês com legumes salteados.',            tags:[]},
+    {cat:'temakis',    name:'Temaki Salmão',        price:'R$†32,90', desc:'Cone de alga nori crocante com arroz temperado, salmão fresco, cream cheese e cebolinha.',             tags:['mais-pedido']},
+    {cat:'temakis',    name:'Temaki Atum',          price:'R$†32,90', desc:'Cone de alga nori com atum fresco, abacate cremoso, pepino e molho especial.',                         tags:[]},
+    {cat:'temakis',    name:'Temaki Skin',          price:'R$†28,90', desc:'Pele de salmão crocante com cream cheese, pepino, cebolinha e molho ponzu. Um clássico.',              tags:['mais-pedido']},
+    {cat:'temakis',    name:'Temaki Veggie',        price:'R$†27,90', desc:'Abacate, manga, pepino, cream cheese e molho tahine. Opção vegetariana deliciosa.',                    tags:['vegetariano']},
+    {cat:'bebidas',    name:'Água de Coco',         price:'R$†12,90', desc:'Água de coco natural gelada. Hidratação pura e tropical.',                                              tags:['sem-gluten']},
+    {cat:'bebidas',    name:'Suco Natural',         price:'R$†16,90', desc:'Sucos da estação: maracujá, abacaxi, limão, laranja ou melancia.',                                      tags:['sem-gluten']},
+    {cat:'bebidas',    name:'Kombuchá',             price:'R$†18,90', desc:'Kombuchá artesanal com probióticos. Sabores: gengibre-limão, hibisco ou maracujá.',                    tags:['novo']},
+    {cat:'bebidas',    name:'Refrigerante Lata',    price:'R$†9,90',  desc:'Coca-Cola, Coca Zero, Guaraná, Sprite ou Tônica.',                                                      tags:[]},
+    {cat:'sobremesas', name:'Açaí Bowl',            price:'R$†34,90', desc:'Açaí cremoso da Amazônia com granola artesanal, frutas da estação, mel e coco ralado.',               tags:['vegetariano','mais-pedido']},
+    {cat:'sobremesas', name:'Mochi Ice Cream',      price:'R$†22,90', desc:'Bolinho de arroz glutinoso recheado com sorvete premium: matcha, morango ou baunilha.',               tags:['vegetariano','novo']},
+    {cat:'extras',     name:'Proteína Extra',       price:'R$†18,90', desc:'Adicione salmão, atum, frango ou tofu ao seu bowl.',                                                    tags:['sem-gluten']},
+    {cat:'extras',     name:'Porção de Arroz',      price:'R$†9,90',  desc:'Arroz shari temperado no estilo japonês.',                                                              tags:['vegetariano','sem-gluten']},
+    {cat:'extras',     name:'Abacate Extra',        price:'R$†10,90', desc:'Abacate fresco em fatias adicionado ao seu pedido.',                                                   tags:['vegetariano','sem-gluten']},
+  ];
 
-// ── MOBILE MENU ───────────────────────────────────────────────────────────────
-document.getElementById('menu-btn').addEventListener('click', () => {
-  document.getElementById('mobile-drawer').classList.add('open');
-  document.getElementById('drawer-overlay').classList.add('open');
-});
-function closeDrawer() {
-  document.getElementById('mobile-drawer').classList.remove('open');
-  document.getElementById('drawer-overlay').classList.remove('open');
-}
+  var tagMeta = {
+    'mais-pedido':  {label:'Mais Pedido', cls:'b-coral'},
+    'premium':      {label:'Premium',     cls:'b-coral'},
+    'apimentado':   {label:'Picante',     cls:'b-coral'},
+    'novo':         {label:'Novo',        cls:'b-green'},
+    'vegetariano':  {label:'Veg',         cls:'b-green'},
+    'sem-gluten':   {label:'Sem Glúten',  cls:'b-gray'},
+  };
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
+  var activeTab = 'pokes';
+
+  function renderTabs() {
+    var el = document.getElementById('menu-tabs');
+    el.innerHTML = categories.map(function(c) {
+      return '<button type="button" onclick="setTab(\'' + c.id + '\')" id="tab-' + c.id + '"' +
+        ' class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold text-gray-400 hover:text-vgreen whitespace-nowrap' + (c.id === activeTab ? ' active' : '') + '"' +
+        ' role="tab" aria-selected="' + (c.id === activeTab ? 'true' : 'false') + '"' +
+        ' aria-controls="menu-items">' + c.label + '</button>';
+    }).join('');
+  }
+
+  function renderItems() {
+    var list = items.filter(function(i){ return i.cat === activeTab; });
+    var html = list.map(function(item) {
+      var badges = item.tags.map(function(t) {
+        var m = tagMeta[t];
+        return m ? '<span class="badge ' + m.cls + '">' + m.label + '</span>' : '';
+      }).join('');
+      var waMsg = encodeURIComponent('Oi! Quero pedir o ' + item.name);
+      return '<div class="menu-item py-5 flex items-start justify-between gap-4">' +
+        '<div class="flex-1 min-w-0">' +
+          '<div class="flex items-center flex-wrap gap-2 mb-1">' +
+            '<h3 class="font-heading font-semibold text-vink text-base">' + escHtml(item.name) + '</h3>' +
+            badges +
+          '</div>' +
+          '<p class="text-gray-500 text-sm leading-relaxed">' + escHtml(item.desc) + '</p>' +
+        '</div>' +
+        '<div class="flex-shrink-0 text-right">' +
+          '<span class="font-heading font-bold text-lg text-vgreen whitespace-nowrap" aria-label="Preço: ' + item.price + '">' + item.price + '</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('menu-items').innerHTML = html;
+  }
+
+  function setTab(id) {
+    activeTab = id;
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    var active = document.getElementById('tab-' + id);
+    if (active) { active.classList.add('active'); active.setAttribute('aria-selected', 'true'); }
+    renderItems();
+  }
+
+  // Sanitização XSS básica (os dados vêm de array estático, mas boa prática)
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  renderTabs();
+  renderItems();
+
+  // ══════════════════════════════════════════════════════════════════
+  //  AVALIAÇÕES
+  // ══════════════════════════════════════════════════════════════════
+  var reviews = [
+    {n:'Ana Carolina',    loc:'Campeche',      av:'A', t:'O melhor poke de Floripa sem dúvidas! Sempre fresco, ingredientes de qualidade e atendimento impecável. Virei cliente fiel!'},
+    {n:'Pedro Henrique',  loc:'Rita Maria',    av:'P', t:'Poke Campeche é viciante! Montagem caprichada, ingredientes fresquíssimos. Entrega super rápida pelo iFood também.'},
+    {n:'Mariana Costa',   loc:'Jurerê',        av:'M', t:'Ambiente incrível, equipe super simpática. O bowl vegano é perfeito. Recomendo para todo mundo!'},
+    {n:'Lucas Ferreira',  loc:'Santa Mônica',  av:'L', t:'Já testei várias pokerias em Floripa e Vibe Poke é disparada a melhor. Porções generosas e preço justo!'},
+    {n:'Isabela Santos',  loc:'Campeche',      av:'I', t:'Fui pela primeira vez semana passada e já sou fã! O spicy salmon é simplesmente divino. Voltarei muitas vezes!'},
+    {n:'Rafael Oliveira', loc:'Jurerê',        av:'R', t:'Atendimento incrível, poke fresquíssimo. O ambiente da unidade do Jurerê é lindo. Obrigado Vibe Poke!'},
+  ];
+  var rg = document.getElementById('reviews-grid');
+  reviews.forEach(function(r, i) {
+    var d = ['d1','d2','d3','','d1','d2'][i] || '';
+    rg.insertAdjacentHTML('beforeend',
+      '<article class="bg-white/5 border border-white/10 rounded-2xl p-6 card reveal ' + d + '">' +
+        '<div class="flex items-start gap-4 mb-4">' +
+          '<div class="w-10 h-10 rounded-full bg-vgreen flex items-center justify-center font-bold text-white flex-shrink-0 font-heading" aria-hidden="true">' + escHtml(r.av) + '</div>' +
+          '<div class="flex-1 min-w-0">' +
+            '<p class="font-semibold text-white truncate">' + escHtml(r.n) + '</p>' +
+            '<p class="text-white/40 text-xs">' + escHtml(r.loc) + '</p>' +
+          '</div>' +
+          '<span class="text-[#F59E0B] text-sm flex-shrink-0 tracking-wide" aria-label="5 estrelas">★★★★★</span>' +
+        '</div>' +
+        '<blockquote class="text-white/60 text-sm leading-relaxed">"' + escHtml(r.t) + '"</blockquote>' +
+      '</article>');
+  });
+
+  // ══════════════════════════════════════════════════════════════════
+  //  FAQ — WCAG: aria-expanded, aria-controls, role
+  // ══════════════════════════════════════════════════════════════════
+  var faqs = [
+    {q:'Quais são os horários de funcionamento?',     a:'Abrimos todos os dias da semana, de segunda a domingo, das 11h às 23h — incluindo feriados!'},
+    {q:'Vocês fazem delivery?',                       a:'Sim! Trabalhamos com delivery pelo iFood e também direto pelo WhatsApp (48) 99174-3368.'},
+    {q:'Posso personalizar meu poke?',                a:'Com certeza! Você escolhe a base (arroz, quinoa ou mix verde), proteína, toppings e molho. Montamos do jeito que você quiser.'},
+    {q:'Têm opções vegetarianas e veganas?',          a:'Sim! Temos várias opções veganas, incluindo tofu grelhado e proteínas plant-based. Todos os toppings podem ser adaptados.'},
+    {q:'Os ingredientes são frescos todo dia?',       a:'Absolutamente! Todos os ingredientes são selecionados e renovados diariamente. Frescor é nossa principal prioridade.'},
+    {q:'Qual o tamanho dos bowls?',                   a:'Nossos bowls vêm em tamanho único generoso — perfeito para uma refeição completa. Também temos opção Kids!'},
+    {q:'Vocês têm opções sem glúten?',                a:'Sim! Vários itens do cardápio são naturalmente sem glúten. Informe sua restrição ao fazer o pedido.'},
+    {q:'Como faço para fazer um pedido?',             a:'Pelo iFood, pelo WhatsApp (48) 99174-3368 ou pessoalmente em uma de nossas 4 unidades. Escolha como preferir!'},
+  ];
+
+  var fl = document.getElementById('faq-list');
+  faqs.forEach(function(f, i) {
+    var bodyId  = 'faq-body-'   + i;
+    var btnId   = 'faq-btn-'    + i;
+    fl.insertAdjacentHTML('beforeend',
+      '<div class="faq-item bg-vcream rounded-2xl overflow-hidden reveal mb-3" style="transition-delay:' + (i*.05) + 's">' +
+        '<h3>' +
+          '<button type="button" id="' + btnId + '" onclick="toggleFaq(' + i + ')"' +
+            ' class="w-full text-left flex items-center justify-between p-5 md:p-6 gap-4"' +
+            ' aria-expanded="false" aria-controls="' + bodyId + '">' +
+            '<span class="font-heading font-semibold text-vink text-sm sm:text-base">' + escHtml(f.q) + '</span>' +
+            '<span class="faq-icon text-vgreen text-2xl font-light flex-shrink-0 leading-none" aria-hidden="true">+</span>' +
+          '</button>' +
+        '</h3>' +
+        '<div id="' + bodyId + '" class="faq-body" role="region" aria-labelledby="' + btnId + '">' +
+          '<p class="px-5 md:px-6 pb-5 text-gray-600 text-sm leading-relaxed">' + escHtml(f.a) + '</p>' +
+        '</div>' +
+      '</div>');
+  });
+
+  function toggleFaq(idx) {
+    var item  = document.querySelector('#faq-btn-' + idx).closest('.faq-item');
+    var body  = document.getElementById('faq-body-' + idx);
+    var btn   = document.getElementById('faq-btn-' + idx);
+    var icon  = btn.querySelector('.faq-icon');
+    var isOpen = item.classList.contains('open');
+
+    // Fecha todos
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+      el.querySelector('.faq-body').classList.remove('open');
+      el.querySelector('.faq-icon').textContent = '+';
+      el.querySelector('button[aria-expanded]').setAttribute('aria-expanded','false');
+    });
+
+    // Abre o clicado se estava fechado
+    if (!isOpen) {
+      item.classList.add('open');
+      body.classList.add('open');
+      icon.textContent = '×';
+      btn.setAttribute('aria-expanded','true');
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  //  NAVBAR — scroll
+  // ══════════════════════════════════════════════════════════════════
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('solid', window.scrollY > 40);
+  }, {passive: true});
+
+  // ══════════════════════════════════════════════════════════════════
+  //  HERO SLIDESHOW
+  // ══════════════════════════════════════════════════════════════════
+  var cur = 0;
+  var slides = document.querySelectorAll('.slide');
+  var slideshowTimer;
+
+  function nextSlide() {
+    slides[cur].classList.remove('active');
+    cur = (cur + 1) % slides.length;
+    slides[cur].classList.add('active');
+  }
+
+  function startSlideshow() {
+    slideshowTimer = setInterval(nextSlide, 5000);
+  }
+
+  // Pausa se usuário prefere movimento reduzido
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    startSlideshow();
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  //  MOBILE MENU — foco acessível
+  // ══════════════════════════════════════════════════════════════════
+  var menuBtn     = document.getElementById('menu-btn');
+  var drawer      = document.getElementById('mobile-drawer');
+  var overlay     = document.getElementById('drawer-overlay');
+  var closeBtn    = document.getElementById('close-drawer');
+  var drawerLinks = drawer.querySelectorAll('a, button');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    menuBtn.setAttribute('aria-expanded','true');
+    overlay.removeAttribute('aria-hidden');
+    // Foco no primeiro item
+    setTimeout(function() { closeBtn.focus(); }, 100);
+    // Trap focus
+    document.addEventListener('keydown', trapFocus);
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+    overlay.setAttribute('aria-hidden','true');
+    menuBtn.focus();
+    document.removeEventListener('keydown', trapFocus);
+  }
+
+  function trapFocus(e) {
+    if (e.key !== 'Tab') {
+      if (e.key === 'Escape') closeDrawer();
+      return;
+    }
+    var focusable = Array.from(drawer.querySelectorAll('a[href], button:not([disabled])'));
+    var first = focusable[0], last = focusable[focusable.length-1];
+    if (e.shiftKey) { if (document.activeElement === first) { last.focus(); e.preventDefault(); } }
+    else            { if (document.activeElement === last)  { first.focus(); e.preventDefault(); } }
+  }
+
+  menuBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  // Fecha drawer ao clicar em link interno
+  drawer.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', closeDrawer);
+  });
+
+  // ══════════════════════════════════════════════════════════════════
+  //  SCROLL REVEAL — IntersectionObserver
+  // ══════════════════════════════════════════════════════════════════
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target); // Para de observar após revelar
+      }
+    });
+  }, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
+
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+  </script>
+
 </body>
 </html>
